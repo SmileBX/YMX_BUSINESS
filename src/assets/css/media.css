@@ -1,0 +1,65 @@
+@media (min-width: 1500px) {
+  .change_form span {
+    width: 15%;
+    text-align: left;
+  }
+  .profile .item_name {
+    width: 15%;
+  }
+  .profile .item_right {
+    width: 2.85rem;
+    height: 0.32rem;
+  }
+}
+@media (max-width: 1500px) and (min-width: 900px) and (max-width: 1500px) and (min-width: 1300px) {
+  .change_form span {
+    width: 18%;
+    text-align: left;
+  }
+  .profile .item_name {
+    width: 18%;
+  }
+  .profile .item_right {
+    width: 3rem;
+    height: 0.35rem;
+  }
+}
+@media (max-width: 1500px) and (min-width: 900px) and (max-width: 1300px) and (min-width: 1100px) {
+  .change_form span {
+    width: 20%;
+    text-align: left;
+  }
+  .profile .item_name {
+    width: 20%;
+  }
+  .profile .item_right {
+    width: 3.5rem;
+    height: 0.4rem;
+  }
+}
+@media (max-width: 1500px) and (min-width: 900px) and (max-width: 1100px) and (min-width: 900px) {
+  .change_form span {
+    width: 20%;
+    text-align: left;
+  }
+  .profile .item_name {
+    width: 20%;
+  }
+  .profile .item_right {
+    width: 3.8rem;
+    height: 0.45rem;
+  }
+}
+@media (max-width: 900px) {
+  .change_form span {
+    width: 30%;
+    text-align: left;
+  }
+  .profile .item_name {
+    width: 20%;
+  }
+  .profile .item_right {
+    width: 4.5rem;
+    height: 0.45rem;
+  }
+}

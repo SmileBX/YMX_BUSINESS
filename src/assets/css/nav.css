@@ -1,0 +1,59 @@
+.common_head {
+  width: 19.2rem;
+  height: 0.88rem;
+  padding: 0 0.5rem;
+}
+.common_head .nav_center,
+.common_head .nav_right {
+  justify-content: flex-end;
+}
+.common_head .input_box {
+  width: 4.5rem;
+}
+.common_head .nav_left .logo {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+.common_head .nav_left .icon_menu {
+  width: 0.15rem;
+  height: 0.15rem;
+}
+.common_head .nav_left .logo_brand {
+  font-size: 0.28rem;
+  font-family: Arial;
+}
+.common_head .nav_left .nav_active {
+  color: #E00606;
+}
+.common_head .nav_center .search {
+  background: #1a1a1a;
+  display: flex;
+  border-radius: 0.03rem;
+  justify-content: center;
+  align-items: center;
+  width: 0.72rem;
+  height: 0.42rem;
+}
+.common_head .nav_center .icon_search {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.common_head .nav_right .icon_down {
+  width: 0.1rem;
+  height: 0.1rem;
+}
+.common_head .nav_right .icon_tx {
+  width: 0.25rem;
+  height: 0.27rem;
+}
+.common_head .nav_right .icon_notice {
+  width: 0.15rem;
+  height: 0.18rem;
+}
+.common_head .nav_right .sell_center {
+  padding: 0.05rem 0.2rem;
+  border: 0.02rem solid #ff0000;
+  border-radius: 0.03rem;
+  font-size: 0.14rem;
+  color: #ff0000;
+}
