@@ -8,8 +8,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      redirect: '/home'
     },
     {
       path: '/home',
@@ -20,6 +19,11 @@ export default new Router({
       path: '/deal',
       name: '产品分类',
       component: () => import(/* webpackChunkName: "about" */ '../views/product/deal.vue')
+    },
+    {
+      path: '/detail',
+      name: '商品详情',
+      component: () => import(/* webpackChunkName: "about" */ '../views/product/detail.vue')
     },
     {
       path: '/coupon',
@@ -64,7 +68,23 @@ export default new Router({
           name: 'vip',
           component: () => import('../views/vipcenter/vip.vue'),
           meta: {
-            title: '消息列表'
+            title: 'vip'
+          }
+        },
+        {
+          path: 'like',
+          name: 'favoite',
+          component: () => import('../views/vipcenter/favoite.vue'),
+          meta: {
+            title: 'favoite'
+          }
+        },
+        {
+          path: 'class',
+          name: 'Deal Requested',
+          component: () => import('../views/vipcenter/classify.vue'),
+          meta: {
+            title: 'Deal Requested'
           }
         },
       ]

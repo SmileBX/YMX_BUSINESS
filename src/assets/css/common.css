@@ -300,6 +300,9 @@ a span {
 .mt3 {
   margin-top: 0.3rem;
 }
+.mt4 {
+  margin-top: 0.4rem;
+}
 .mt8 {
   margin-top: 0.8rem;
 }
@@ -368,6 +371,9 @@ a:hover {
 }
 .color_red {
   color: #FB5B63;
+}
+.color_blood {
+  color: #ff0000;
 }
 .text_flow {
   text-overflow: -o-ellipsis-lastline !important;

@@ -69,7 +69,7 @@
       }
   }
 </script>
-<style lang="scss">
+<style lang="less">
 @import url("../../assets/css/mine.less");
 .el-radio__input.is-checked .el-radio__inner{
     border-color:  #FD6A6C!important;

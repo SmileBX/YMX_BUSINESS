@@ -1,40 +1,60 @@
 <template>
-    <div class="pro_item">
-        <img src="" alt="" class="item_img">
-        <div class="item_main">
-            <div class="text_flow1 font_bold item_title">Bedsure 金粉世家大棚房管局评估价攀升</div>
-            <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
-            <div class="flex justifyContentBetween w100">
-                <div class="flex flex1 ">
-                    <span class="text_through">$109.00</span>
-                    <span class="item_spill">-50%</span>
+  <div class="flex deal_list">
+      <div class="pro_item" v-for="(item,index) in 20" :key="index">
+          <div class="item_mask font14 flex">
+              <div class="get_coupon">Get Coupon</div>
+              <div class="mt2">View detial >></div>
+          </div>
+          <img src="" alt="" class="item_img">
+          <div class="item_main">
+              <div class="text_flow1 font_bold item_title mt1">Bedsure 金粉世家大棚房管局评估价攀升</div>
+              <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
+              <div class="flex justifyContentBetween w100">
+                  <div class="flex flex1 ">
+                      <span class="text_through">$109.00</span>
+                      <span class="item_spill">-50%</span>
+                  </div>
+                  <div class="item_money">$54.50</div>
+              </div>
+              <div class="flex justifyContentBetween mt1 w100 color_9">
+                <div class="flex flexAlignCenter">
+                    <img src="../assets/images/zan.png" alt="" class="icon_zan">
+                    <span class="ml1">11</span>
                 </div>
-                <div class="item_money">$54.50</div>
-            </div>
-            <div class="flex justifyContentBetween mt1 w100 color_9">
-              <div class="flex">
-                  <img src="../assets/images/icon.png" alt="" class="icon_zan">
-                  <span class="ml1">11</span>
+                <div class="flex flexAlignCenter">
+                  <img src="../assets/images/comment.png" alt="" class="icon_mes">
+                    <span class="ml1">0</span>
+                </div>
               </div>
-              <div class="flex">
-                <img src="../assets/images/icon.png" alt="" class="icon_mes">
-                  <span class="ml1">0</span>
-              </div>
-            </div>
-        </div>
+          </div>
+      </div>
     </div>
 </template>
 <script>
-
+  export default{
+    data(){
+      return{
+        activeIndex:"1",
+      }
+    },
+    mthods:{
+      
+    }
+  }
 </script>
 <style lang="less" scoped>
+  @import url("../assets/css/media.less");
+  .deal_list{
+    margin-top:0.2rem;
+    border:1px solid red;
+    flex-wrap: wrap;
+  }
   .text_flow1{
     overflow: hidden!important;
     white-space: nowrap!important;
     text-overflow: ellipsis!important;
   }
   .pro_item{
-    border:1px solid blue;
     padding:0.13rem 0.15rem;
     display: flex;
     flex-direction: column;
@@ -43,7 +63,28 @@
     margin-right:0.27rem;
     margin-top:0.39rem;
     font-size:0.14rem;
-    
+    position: relative;
+    border:1px solid blue;
+  }
+  .pro_item:hover .item_mask{
+    display: flex;
+  }
+  .item_mask{
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;height:100%;
+    background:rgba(255,94,109,0.5);
+    flex-direction: column;
+    color:#ffffff;
+    align-items: center;
+    justify-content: center;
+  }
+  .get_coupon{
+    border:1px solid #ffffff;
+    width:60%;
+    padding:0.1rem 0;
   }
   .item_img{
     border:1px solid red;

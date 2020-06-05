@@ -79,7 +79,7 @@
         if(key==1){
           urlPath = "/mine/like"
         }else if(key==2){
-          urlPath = "/mine/deal"
+          urlPath = "/mine/class"
         }else if(key==3){
           urlPath = "/mine/notice"
         }else if(key==4){

@@ -23,12 +23,14 @@
 }
 .profile .title,
 .change_pwd .title,
-.vip_info .title {
+.vip_info .title,
+.favoite .title {
   margin: 0.31rem 0 0 0.56rem;
 }
 .profile .confirm,
 .change_pwd .confirm,
-.vip_info .confirm {
+.vip_info .confirm,
+.favoite .confirm {
   color: #ffffff;
   width: 88px;
   height: 22px;
@@ -153,4 +155,21 @@
 }
 .vip_info .card_item.active .date_time {
   color: #ffffff;
+}
+.favoite .text_left {
+  justify-content: space-between;
+  align-items: center;
+}
+.favoite .clear_btn {
+  color: #ffffff;
+  width: 1.4rem;
+  text-align: center;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  background: linear-gradient(135deg, #fb7a6a, #ff5e6d);
+  margin-left: 0.2rem;
+}
+.favoite .elem_drop {
+  border: 0.01rem solid #CCCCCC;
+  padding: 0.1rem;
 }

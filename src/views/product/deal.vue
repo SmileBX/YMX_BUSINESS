@@ -57,9 +57,7 @@
           <div class="font14 color_red reset">RESET ALL</div>
       </div>
       <!--分类列表-->
-      <div class="deal_list flex">
-        <proItem v-for="(item,index) in 20" :key="index"></proItem>
-      </div>
+      <proItem ></proItem>
   </div>
 </template>
 <script>

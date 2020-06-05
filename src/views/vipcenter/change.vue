@@ -27,7 +27,7 @@
         }
     }
 </script>
-<style lang="scss">
+<style lang="less">
   @import url("../../assets/css/mine.less");
 
 </style>
