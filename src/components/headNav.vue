@@ -6,12 +6,12 @@
                 <span class="logo_brand font_bold">VIPON</span>
             </div>
             <div class="flex ml6">
-                <div>
+                <div @click="changeNav(1)" class="cli_pointer">
                   <img src="../assets/images/cai.png" alt="" class="icon_menu">
-                  <span class="">CATEGORIES</span>
+                  <span :class="{'nav_active':navIndex==1}">CATEGORIES</span>
                 </div>
-                <div class="ml5">DEALS</div>
-                <div class="nav_active ml5">VIP</div>
+                <div class="ml5 cli_pointer" :class="{'nav_active':navIndex==2}" @click="changeNav(2)">DEALS</div>
+                <div class=" ml5 cli_pointer" :class="{'nav_active':navIndex==3}" @click="changeNav(3)">VIP</div>
             </div>
         </div>
         <div class="nav_center flex flexAlignCenter">
@@ -49,7 +49,45 @@
     </div>
 </template>
 <script>
-
+export default{
+  data(){
+    return{
+      navIndex:1,
+    }
+  },
+  mounted () {
+    this.navIndex = 1;
+    this.$router.push('/home')
+  },
+  methods: {
+    changeNav(i){
+      this.navIndex = i;
+      let urlPath = ''
+      switch (i){
+        case 1:
+          urlPath = '/home';
+          break;
+        case 2:
+          urlPath = '/deal';
+          break;
+        case 3:
+          urlPath = '/introduce';
+          break;
+      }
+      this.$router.push(urlPath)
+    }
+  },
+  watch: {
+    '$route':{
+      handler(val,oldval){
+        console.log(val);//新路由信息
+        console.log(oldval);//老路由信息
+      },
+      // 深度观察监听
+      deep: true
+    }
+  }
+}
 </script>
 <style lang="less">
   @import url("../assets/css/nav.less");

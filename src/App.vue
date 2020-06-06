@@ -1,16 +1,7 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <Header-nav v-if="header_show"></Header-nav>
-    <keep-alive>
-      <router-view v-if="$route.meta.keepAlive" v-on:header="header"></router-view>
-    </keep-alive>
-	  <router-view v-if="!$route.meta.keepAlive" v-on:header="header"></router-view>
-
-    <!-- <router-view v-on:header="header"></router-view> -->
+    <Header-nav></Header-nav>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -19,14 +10,13 @@ export default {
   name: 'App',
   data(){
     return {
-        header_show:true
+       
       }
   },
+  mounted () {
+    
+  },
   methods:{
-      //是否显示头部
-      header(bool) {
-        this.header_show = bool;
-      },
       
   }
 }

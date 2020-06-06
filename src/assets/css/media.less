@@ -14,6 +14,12 @@
         width:1.7rem;height:1.7rem;
       }
     }
+    .deal_head{
+      display: block;
+    }
+    .show_mobile{
+      display: none;
+    }
   }
   @media (max-width:1400px)and (min-width:1100px){
     .pro_item {
@@ -24,6 +30,12 @@
       .item_img{
         width:2.5rem;height:2.5rem;
       }
+    }
+    .deal_head{
+      display: block!important;
+    }
+    .show_mobile{
+      display: none!important;
     }
   }
   @media (max-width:1100px)and (min-width:900px){
@@ -36,6 +48,12 @@
         width:3rem;height:3rem;
       }
     }
+    .deal_head{
+      display: block!important;
+    }
+    .show_mobile{
+      display: none!important;
+    }
   }
   @media (max-width:900px)and (min-width:700px){
     .pro_item {
@@ -46,6 +64,12 @@
       .item_img{
         width:3.8rem;height:3.8rem;
       }
+    }
+    .deal_head{
+      display: block!important;
+    }
+    .show_mobile{
+      display: none!important;
     }
   }
   @media (max-width:700px) and (min-width:500px){
@@ -58,11 +82,23 @@
         width:5rem;height:5rem;
       }
     }
+    .deal_head{
+      display: none!important;
+    }
+    .show_mobile{
+      display: block!important;
+    }
   }
   @media (max-width:500px){
+    .deal_head{
+      display: none!important;
+    }
+    .show_mobile{
+      display: block!important;
+    }
     .pro_item {
       width:48%;
-      &:nth-child(3n){
+      &:nth-child(2n){
         margin-right:0!important;
       }
       .item_img{
@@ -170,6 +206,14 @@
         width:3.6rem;height:3.6rem;
       }
     }
+    .comments{
+      width:100%!important;
+    }
+    .title,.pro_mention{
+      overflow: hidden!important;
+      white-space: nowrap!important;
+      text-overflow: ellipsis!important;
+    }
   }
   
   @media (max-width:600px){
@@ -182,6 +226,20 @@
         width:5.8rem;height:5.8rem;
       }
     }
+    .detail_img{
+      width:150px!important;height:150px!important;
+    }
+  }
+  .comments{
+    width:100%!important;
+  }
+  .title,.pro_mention{
+    overflow: hidden!important;
+    white-space: nowrap!important;
+    text-overflow: ellipsis!important;
+  }
+  .detail_img{
+    width:150px!important;height:150px!important;
   }
 }
 .bottom_comon{//底部高度
@@ -193,20 +251,214 @@
   }
 }
 .home{ //主页
-  @media (min-width:1400px){
-    
+  @media (min-width:1500px){
+    .pro_item {
+      width:14.93%;
+      &:nth-child(6n){
+        margin-right:0!important;
+      }
+      .item_img{
+        width:1.8rem;height:1.8rem;
+      }
+    }
+    .home_right{
+      display: block;
+    }
+    .home_left{
+      width:14rem;
+    }
   }
-  @media (max-width:1400px)and (min-width:1000px){
-    
+  @media (max-width:1500px)and (min-width:1200px){
+    .pro_item {
+      width:18.35%;
+      &:nth-child(5n){
+        margin-right:0!important;
+      }
+      .item_img{
+        width:2.2rem;height:2.2rem;
+      }
+    }
+    .home_right{
+      display: block;
+    }
+    .home_left{
+      width:14rem;
+    }
   }
-  @media (max-width:1000px)and (min-width:800px){
-    
+  @media (max-width:1200px)and (min-width:900px){
+    .pro_item {
+      width:23.5%;
+      &:nth-child(4n){
+        margin-right:0!important;
+      }
+      .item_img{
+        width:3rem;height:3rem;
+      }
+    }
+    .home_right{
+      display: block;
+    }
+    .home_left{
+      width:14rem;
+    }
   }
-  @media (max-width:800px)and (min-width:600px){
-    
+  @media (max-width:900px)and (min-width:600px){
+    .pro_item {
+      width:32%;
+      &:nth-child(3n){
+        margin-right:0!important;
+      }
+      .item_img{
+        width:5rem;height:5rem;
+      }
+    }
+    .home_right{
+      display: none;
+    }
+    .home_left{
+      width:100%;
+      padding:0 0.05rem!important;
+    }
+
   }
   
   @media (max-width:600px){
+    .pro_item {
+      width:48%;
+      &:nth-child(2n){
+        margin-right:0!important;
+      }
+      .item_img{
+        width:7.8rem;height:7.8rem;
+      }
+    }
+    .home_right{
+      display: none;
+    }
+    .home_left{
+      width:100%;
+      padding:0 0.05rem!important;
+    }
+  }
+}
+.introduce{
+  @media (min-width:1300px){
+    .intr_duce{
+      padding:1.05rem 3.41rem 1.6rem 3.45rem;
+    }
+  }
+  @media (max-width:1300px) and (min-width:1180px){
+    .intr_duce{
+      padding:1.05rem 2.8rem 1.6rem 2.9rem;
+    }
+  }
+  @media (max-width:1180px) and (min-width:1020px){
+    .intr_duce{
+      padding:1.05rem 2rem 1.6rem 2rem;
+    }
+  }
+  @media (max-width:1020px) and (min-width:880px){
+    .intr_duce{
+      padding:1.05rem 1rem 1.6rem 1rem;
+    }
+  }
+  @media(max-width:880px){
+    .intr_duce{
+      padding:1.05rem 0 1.6rem 0;
+    }
+  }
+}
+.mine_vip{
+  @media(min-width:1400px){
+    padding:0 1.47rem 0 2.08rem;
+    .mine_menu{
+      width:2.42rem;
+    }
+    .profile,.change_pwd{
+      .item_name{
+        width:10%;
+      }
+      .input_box{
+        width:2.5rem;
+        height:0.35rem;
+      }
+    }
+    .change_pwd{
+      .pwd_name{
+        width:15%
+      }
+    }
     
+  }
+  @media (max-width:1400px) and (min-width:1000px){
+    .mine_menu{
+      width:3rem;
+    }
+    .profile,.change_pwd{
+      .item_name{
+        width:12%;
+      }
+      .input_box{
+        width:3rem;
+        height:0.45rem;
+      }
+    }
+    .change_pwd{
+      .pwd_name{
+        width:18%
+      }
+    }
+    @media (max-width:1400px) and (min-width:1200px) {
+      padding:0 1rem 0 1.58rem;
+    }
+    @media (max-width:1200px) and (min-width:1000px) {
+      padding:0 0.5rem 0 1rem;
+    }
+  }
+  @media (max-width:1000px) and (min-width:800px){
+    padding:0 0.5rem 0 1rem;
+    .mine_menu{
+      width:4rem;
+    }
+    .profile,.change_pwd{
+      .item_name{
+        width:15%;
+      }
+      .input_box{
+        width:4rem;
+        height:0.5rem;
+      }
+    }
+    .change_pwd{
+      .pwd_name{
+        width:20%
+      }
+    }
+    
+  }
+  @media (max-width:800px){
+    padding:0 0.3rem 0 0.6rem;
+    .mine_menu{
+      width:4.5rem;
+    }
+    .profile,.change_pwd{
+      .item_name{
+        width:20%;
+      }
+      .input_box{
+        width:5rem;
+        height:0.6rem;
+      }
+    }
+    .change_pwd{
+      .pwd_name{
+        width:30%
+      }
+    }
+  }
+}
+@media (max-width:800px){
+  .detail,.deal{
+    padding:0 0.8rem!important;
   }
 }

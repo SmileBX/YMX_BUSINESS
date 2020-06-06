@@ -1,11 +1,9 @@
 .mine_vip {
   margin-top: 0.5rem;
-  padding: 0 1.47rem 0 2.08rem;
   display: flex;
   justify-content: space-between;
 }
 .mine_vip .mine_menu {
-  width: 2.42rem;
   margin-right: 0.49rem;
 }
 .mine_vip .mine_menu .mine_account {
@@ -24,13 +22,15 @@
 .profile .title,
 .change_pwd .title,
 .vip_info .title,
-.favoite .title {
+.favoite .title,
+.requset .title {
   margin: 0.31rem 0 0 0.56rem;
 }
 .profile .confirm,
 .change_pwd .confirm,
 .vip_info .confirm,
-.favoite .confirm {
+.favoite .confirm,
+.requset .confirm {
   color: #ffffff;
   width: 88px;
   height: 22px;
@@ -45,29 +45,28 @@
 .change_pwd .change_form .form_item {
   margin: 0.2rem 0;
 }
-.change_pwd .change_form .form_item input {
-  border: 1px solid #E4ECFA;
+.change_pwd .change_form .form_item .input_box {
   padding: 0 0.1rem;
-  height: 0.3rem;
-  line-height: 0.3rem;
+  text-align: left;
+  border: 1px solid #E4ECFA;
 }
 .profile .icon_rl {
-  width: 0.14rem;
-  height: 0.15rem;
+  width: 14px;
+  height: 15px;
 }
 .profile .icon_loc {
-  width: 0.12rem;
-  height: 0.16rem;
+  width: 12px;
+  height: 16px;
 }
 .profile .icon_edit {
-  width: 0.35rem;
-  height: 0.35rem;
+  width: 35px;
+  height: 35px;
 }
 .profile .icon_avatar {
   border: 1px solid red;
   border-radius: 50%;
-  width: 0.42rem;
-  height: 0.42rem;
+  width: 42px;
+  height: 42px;
 }
 .profile .file_form {
   margin: 0.59rem 0 0 0.68rem;
@@ -172,4 +171,36 @@
 .favoite .elem_drop {
   border: 0.01rem solid #CCCCCC;
   padding: 0.1rem;
+}
+.requset .quset_list .quest_item {
+  padding: 0.2rem;
+  margin-top: 0.12rem;
+}
+.requset .quset_list .quest_item .icon1 {
+  width: 0.15rem;
+  height: 0.15rem;
+  margin-right: 0.05rem;
+}
+.requset .quset_list .quest_item .quest_img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+.requset .quset_list .quest_item .right_quest {
+  height: 100px;
+  justify-content: space-between;
+}
+.requset .quset_list .quest_item .buy_now {
+  height: 0.36rem;
+  line-height: 0.36rem;
+  padding: 0 0.16rem;
+  background: linear-gradient(135deg, #fb7a6a, #ff5e6d);
+  color: #ffffff;
+  border-radius: 0.04rem;
+  font-size: 0.14rem;
+}
+.requset .quset_list .quest_item .item_right {
+  width: 25%;
+  margin-left: 1rem;
+  justify-content: space-between;
 }

@@ -2,6 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 
+//解决在使用ElementUI中的导航时，默认情况下如果重复点击某选项，会报错。
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -14,6 +21,11 @@ export default new Router({
       path: '/home',
       name: '首页',
       component: () => import(/* webpackChunkName: "about" */ '../views/home.vue')
+    },
+    {
+      path: '/introduce',
+      name: 'VIP介绍',
+      component: () => import(/* webpackChunkName: "about" */ '../views/product/vipIntroduce.vue')
     },
     {
       path: '/deal',
@@ -80,9 +92,9 @@ export default new Router({
           }
         },
         {
-          path: 'class',
+          path: 'request',
           name: 'Deal Requested',
-          component: () => import('../views/vipcenter/classify.vue'),
+          component: () => import('../views/vipcenter/request.vue'),
           meta: {
             title: 'Deal Requested'
           }
