@@ -1,9 +1,9 @@
 <template>
     <div>
       <div class="detail">
-          <div class="flex">
+          <div class="flex detail_head">
               <div class="detail_img">
-                  <img src="" alt="">
+                  <img src="../../assets/images/pic.png" alt="">
               </div>
               <div class="flex flexColumn flex1 ml2 flexAlignStart justifyContentBetween">
                   <div class="text_flow title font_bold ">Wireless Earbuds Bluetooth 5.1 Headphones, pendali IPX7 Waterproof Earbuds with Deep Bass, Auto Pairing, Mini Portable Charging Case, Touch Earbuds in...</div>
@@ -33,9 +33,9 @@
                       <img src="../../assets/images/bq.png" alt="" class="icon_bq">
                       <span class="font14 text_left">This coupon code can be applied to all variations of this product.</span>
                   </div>
-                  <div class="font12 color_9 mt3 text_left text_flow1">The descriptions and pictures of products on Vipon are for reference only. Please fully view the product listing on Amazon before purchasing.</div>
-                  <div class="font14 ">About the product</div>
-                  <div class="pro_mention  font14 text_left text_flow"> 
+                  <div class="font12 color_9 mt3 text_left ">The descriptions and pictures of products on Vipon are for reference only. Please fully view the product listing on Amazon before purchasing.</div>
+                  <div class="font14 detail_about">About the product</div>
+                  <div class="pro_mention  font14 text_left "> 
                     3D Stereo Sound & Bluetooth 5.1 Bluetooth wireless earphones with noise cancelling, you can shield surrounding noises, enjoy your music everywhere even in a loud environment. Wireless earbuds adopt the most advanced Bluetooth 5.1
                   </div>
                   <div class="open_ama">Open in Amazon</div>
@@ -52,9 +52,9 @@
               </div>
           </div>
           <div class="flex justifyContentAround mt4">
-              <div class="flex flexAlignCenter">
+              <div class="flex flexAlignCenter detail_new_left">
                   <img src="../../assets/images/logo.png" alt="" class="logo">
-                  <div class="font14 ml2"><span class="color_blood">Log in </span>or<span class="color_blood"> Sign up</span>for a Vipon account to post comment</div>
+                  <div class="font14 ml2 text_left"><span class="color_blood">Log in </span>or<span class="color_blood"> Sign up</span>for a Vipon account to post comment</div>
               </div>
               <div class="flex">
                   <span class="btn_sign sign_in">Log In</span>

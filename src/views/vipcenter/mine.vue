@@ -4,7 +4,7 @@
       <div class="mine_menu">
           <div class="mine_account font_bold font18 flex flexColumn flexAlignCenter justifyContentBetween">
             <img src="" alt="" class="img_ava">
-            <div>Vision_1776829</div>
+            <div class="mt2">Vision_1776829</div>
             <div>VIP0</div>
             <div>Edit Profile >></div>
           </div>
@@ -25,10 +25,9 @@
                 </el-menu-item>
                 <el-menu-item index="3">
                   <i class="el-icon-s-opportunity"></i>
-                  <el-badge :value="200" :max="99" class="item">
+                  <el-badge :value="200" :max="99" class="item ">
                     Notification
                   </el-badge>
-                  <!-- <span slot="title">Notification</span> -->
                 </el-menu-item>
                 <el-menu-item index="4">
                   <i class="el-icon-attract"></i>
@@ -50,8 +49,51 @@
             </el-col>
           </el-row>
       </div>
+      <!--手机端-->
+      <div class="mine_mobile">
+          <div class="mine_account font_bold font18 flex flexColumn flexAlignCenter justifyContentBetween">
+            <img src="" alt="" class="img_ava">
+            <div class="mt2">Vision_1776829</div>
+            <div>VIP0</div>
+            <div>Edit Profile >></div>
+          </div>
+          <el-menu :default-active="activeIndex" class="el-menu-demo el_mobile_menu" mode="horizontal" @select="choseIndex">
+            <el-menu-item index="1" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-s-platform"></i>
+              <span slot="title">Favorites</span>
+            </el-menu-item>
+            <el-menu-item index="2" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-shopping-cart-2"></i>
+              <span slot="title">Deal Requested</span>
+            </el-menu-item>
+            <el-menu-item index="3" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-s-opportunity"></i>
+              <el-badge :value="200" :max="99" class="item mobile_badeg">
+                Notification
+              </el-badge>
+              <!-- <span slot="title">Notification</span> -->
+            </el-menu-item>
+            <el-menu-item index="4" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-attract"></i>
+              <span slot="title">VIP</span>
+            </el-menu-item>
+            <el-menu-item index="5" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-s-custom"></i>
+              <span slot="title">Profile</span>
+            </el-menu-item>
+            <el-menu-item index="6" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-key"></i>
+              <span slot="title">Change Password</span>
+            </el-menu-item>
+            <el-menu-item index="7" class="flex flexColumn flexAlignCenter four_em_item">
+              <i class="el-icon-s-open"></i>
+              <span slot="title">spare</span>
+            </el-menu-item>
+          </el-menu> 
+      </div>
+      <div class="slider"></div>
       <!---单页面-->
-      <div class="flex1">
+      <div class="flex1 mine_box_right">
         <router-view></router-view>
       </div>
       
@@ -116,6 +158,7 @@
     padding: 0 0.2rem;
     height:0.56rem;
     line-height: 0.56rem;
+   border-bottom: none;
   }
   .el-menu-vertical-demo.el-menu{
     border-right:0;
@@ -136,5 +179,17 @@
     border: none;
     padding:0;
     color: #303133;
+  }
+  .el-menu--horizontal>.el-menu-item{
+    line-height:1.2;
+  }
+  .el-menu--horizontal>.el-menu-item.is-active{
+    border-bottom: 2px solid #FD6A6C;
+  }
+  .el-menu.el-menu--horizontal{
+    border-bottom: none;
+  }
+  .mobile_badeg .el-badge__content.is-fixed{
+      right:-0.5rem;top:-0.2rem;
   }
 </style>

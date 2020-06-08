@@ -3,21 +3,38 @@
   display: flex;
   justify-content: space-between;
 }
+.mine_vip .img_ava {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 0.01rem solid red;
+}
 .mine_vip .mine_menu {
   margin-right: 0.49rem;
+  display: block;
 }
 .mine_vip .mine_menu .mine_account {
   width: 100%;
-  height: 2.9rem;
   background: linear-gradient(135deg, #fb7a6a, #ff5e6d);
   padding: 0.32rem 0 0.26rem 0;
   color: #ffffff;
 }
-.mine_vip .mine_menu .mine_account .img_ava {
-  width: 0.9rem;
-  height: 0.9rem;
-  border-radius: 50%;
-  border: 0.01rem solid red;
+.mine_vip .mine_mobile {
+  display: none;
+}
+.mine_vip .mine_mobile .mine_account {
+  background: #FF5E6D;
+  color: #ffffff;
+  padding: 0.5rem 0;
+}
+.mine_vip .mine_mobile .el_mobile_menu {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.mine_vip .mine_mobile .el_mobile_menu .four_em_item {
+  width: 14.2%;
 }
 .profile .title,
 .change_pwd .title,
@@ -161,7 +178,8 @@
 }
 .favoite .clear_btn {
   color: #ffffff;
-  width: 1.4rem;
+  padding: 0.05rem 0.2rem;
+  box-sizing: content-box;
   text-align: center;
   height: 0.4rem;
   line-height: 0.4rem;
@@ -175,16 +193,19 @@
 .requset .quset_list .quest_item {
   padding: 0.2rem;
   margin-top: 0.12rem;
+  border-bottom: 1px solid #dbdbdb;
 }
 .requset .quset_list .quest_item .icon1 {
-  width: 0.15rem;
-  height: 0.15rem;
+  width: 15px;
+  height: 15px;
   margin-right: 0.05rem;
+}
+.requset .quset_list .quest_item .desc_item_bototm {
+  margin-right: 0.1rem;
 }
 .requset .quset_list .quest_item .quest_img {
   width: 100px;
   height: 100px;
-  border: 1px solid red;
 }
 .requset .quset_list .quest_item .right_quest {
   height: 100px;
@@ -193,7 +214,7 @@
 .requset .quset_list .quest_item .buy_now {
   height: 0.36rem;
   line-height: 0.36rem;
-  padding: 0 0.16rem;
+  width: 1rem;
   background: linear-gradient(135deg, #fb7a6a, #ff5e6d);
   color: #ffffff;
   border-radius: 0.04rem;

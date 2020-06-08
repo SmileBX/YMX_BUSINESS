@@ -63,7 +63,7 @@
                             <div class="color_red font30">Sellers Share Deals</div>
                             <div class="font14 text_flow1">Amazon sellers share deals and coupons for a huge selection of products, most 50% off or more.</div>
                         </div>
-                        <img src="" alt="" class="floor_img">
+                        <img src="../../assets/images/pic.png" alt="" class="floor_img">
                     </div>
                 </div>
                 <div class="floor3 flex justifyContentBetween">

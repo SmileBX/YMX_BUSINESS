@@ -48,4 +48,14 @@ export default {
 .el-pager li:hover{
   color:#FB7A6A;
 }
+.el-button:active {
+  color: #FF5E6D;
+  border-color: #FF5E6D;
+  outline: 0;
+}
+.el-button:focus, .el-button:hover {
+    color: #FF5E6D;
+    border-color: #DBDBDB;
+    background-color: #ffffff;
+}
 </style>

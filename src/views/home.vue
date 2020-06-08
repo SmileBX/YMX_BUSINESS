@@ -10,7 +10,7 @@
                       <div class="swiper-slide">slider2</div>
                       <div class="swiper-slide">slider3</div>
                     </div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-next "></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div><!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
                 </div>
@@ -25,7 +25,7 @@
                                         <div class="get_coupon">Get Coupon</div>
                                         <div class="mt2">View detial >></div>
                                     </div>
-                                    <img src="" alt="" class="item_img">
+                                    <img src="../assets/images/pic.png" alt="" class="item_img">
                                     <div class="item_main">
                                         <div class="text_flow1 font_bold item_title mt1">Bedsure 金粉世家大棚房管局评估价攀升</div>
                                         <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
@@ -68,7 +68,7 @@
                                         <div class="get_coupon">Get Coupon</div>
                                         <div class="mt2">View detial >></div>
                                     </div>
-                                    <img src="" alt="" class="item_img">
+                                    <img src="../assets/images/pic.png" alt="" class="item_img">
                                     <div class="item_main">
                                         <div class="text_flow1 font_bold item_title mt1">Bedsure 金粉世家大棚房管局评估价攀升</div>
                                         <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="mt4 right_list">
                         <div class="right_item flex justifyContentBetween" v-for="(item,key) in 7" :key="key">
-                            <img src="" alt="" class="right_item_img">
+                            <img src="../assets/images/pic.png" alt="" class="right_item_img">
                             <div class="flex1 flex flexColumn flexAlignStart justifyContentBetween ml2">
                                 <div class="text_flow font12">DAFENGEA Men's Outdoor Lightweight Breathable Quick Dry Hiking Pants, KZ335...</div>
                                 <div>
@@ -155,11 +155,11 @@
                     <!---广告图片-->
                     <div>
                         <div class="big_img_box">
-                            <img src="" alt="" class="big_pic">
+                            <img src="../assets/images/pic.png" alt="" class="big_pic">
                             <img src="../assets/images/x.png" alt="" class="del_icon">
                         </div>
                         <div class="big_img_box">
-                            <img src="" alt="" class="big_pic">
+                            <img src="../assets/images/pic.png" alt="" class="big_pic">
                             <img src="../assets/images/x.png" alt="" class="del_icon">
                         </div>
                     </div>
@@ -271,13 +271,13 @@ export default{
 <style>
 @import url("../assets/css/product.less");
 .swiper-container{
-    /* height:4.01rem; */
     --swiper-theme-color: #ff6600;
-    --swiper-pagination-color: #ff6600;/* 两种都可以 */
+    --swiper-pagination-color: #ff6600;/*两种都可以*/
+    --swiper-navigation-size: 0.8rem;/* 设置按钮大小 */
+    outline: none ;
   }
-  .swiper-slide{
-    /* height:4.01rem;line-height: 4.01rem; */
-    border:1px solid red;
+  .swiper-wrapper{
+    
   }
   .swiper-button-prev, .swiper-button-next{
       color:#999999;
@@ -288,9 +288,5 @@ export default{
   .swiper-container2{
       width:100%;
       /* border:1px solid black; */
-  }
-  .swiper-slide2{
-      /* width:2rem;height:4rem; */
-      border:1px solid orange;
   }
 </style>

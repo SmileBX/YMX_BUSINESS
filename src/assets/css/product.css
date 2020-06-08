@@ -1,15 +1,12 @@
 .coupon {
   margin-top: 1.7rem;
-}
-.coupon .coupon_card {
-  width: 5.12rem;
+  width: 100%;
 }
 .coupon .coupon_card .conpon_main {
   padding: 0.25rem 0.1rem;
   color: #ffffff;
   background: linear-gradient(135deg, #fb7a6a, #ff5e6d);
   box-shadow: 0 0.02rem 0.08rem 0 #d0dcf0;
-  height: 3.3rem;
   width: 100%;
 }
 .coupon .icon_gou {
@@ -21,16 +18,14 @@
   color: #FD6A6C;
 }
 .coupon .coupon_btn {
-  width: 2.6rem;
-  height: 0.38rem;
-  line-height: 0.38rem;
+  padding: 0.1rem 0.2rem;
   background: #ffffff;
   color: #FD6A6C;
 }
 .deal {
   padding: 0 0.5rem;
 }
-.deal .deal_head {
+.deal .show_pc {
   display: block;
 }
 .deal .show_mobile {
@@ -63,10 +58,8 @@
   width: 0.84rem;
 }
 .deal .el_ify {
-  background-color: #FD6A6C;
-  border-color: #FD6A6C;
-  padding: 0.12rem 0.14rem;
   font-size: 0.14rem;
+  border: none;
 }
 .deal .el-drawer__open .el-drawer.rtl {
   width: 60%!important;
@@ -100,7 +93,6 @@
 .detail .detail_img {
   width: 4.6rem;
   height: 4.6rem;
-  border: 1px solid red;
 }
 .detail .detail_img img {
   width: 100%;
@@ -114,15 +106,13 @@
   line-height: 1.2;
 }
 .detail .icon_img {
-  width: 0.11rem;
-  height: 0.11rem;
-  margin: 0 0.1rem;
+  width: 11px;
+  height: 11px;
+  margin: 0 0.2rem;
 }
 .detail .get_cou {
   color: #ffffff;
-  line-height: 0.49rem;
-  width: 2.41rem;
-  height: 0.49rem;
+  padding: 0.1rem 0.2rem;
   background: linear-gradient(135deg, #fb7a6a, #ff5e6d);
 }
 .detail .icon_bq {
@@ -163,9 +153,10 @@
 }
 .detail .btn_sign {
   border-radius: 0.02rem;
-  padding: 0rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   height: 0.32rem;
   line-height: 0.32rem;
+  box-sizing: content-box;
 }
 .detail .sign_in {
   background: #eeeeee;
@@ -276,9 +267,6 @@
 .bottom_comon .copy_right {
   margin-top: 0.7rem;
 }
-.home {
-  border: 1px solid red;
-}
 .home .home_main {
   padding: 0 0.54rem 0 0.4rem;
   margin-top: 0.2rem !important;
@@ -307,7 +295,6 @@
 .home .home_main .home_right .right_list .right_item_img {
   width: 1.1rem;
   height: 1.1rem;
-  border: 1px solid red;
 }
 .home .home_main .home_right .right_list .com_icon {
   width: 0.11rem;
@@ -318,7 +305,6 @@
   position: relative;
   width: 3.8rem;
   height: 3.8rem;
-  border: 1px solid red;
 }
 .home .home_main .home_right .big_img_box .big_pic {
   width: 100%;
@@ -339,7 +325,6 @@
   align-items: center;
   font-size: 0.14rem;
   position: relative;
-  border: 1px solid blue;
 }
 .home .swiper-container .pro_item1 .item_mask {
   display: none;
@@ -362,7 +347,6 @@
 .home .swiper-container .pro_item1 .item_img {
   width: 100%;
   height: auto;
-  border: 1px solid red;
 }
 .home .swiper-container .pro_item1 .item_money {
   color: #ff0000;
@@ -420,7 +404,7 @@
 }
 .introduce .intr_main .intr_duce .floor1 .vip_card .card_item {
   padding: 0.6rem 0 0.4rem 0;
-  width: 3.7rem;
+  width: 4rem;
   height: 2.8rem;
   margin-top: 0.4rem;
   border-radius: 0.14rem;
@@ -489,7 +473,6 @@
 .introduce .intr_main .intr_duce .floor2 .floor_img {
   width: 4.2rem;
   height: 3.23rem;
-  border: 1px solid red;
 }
 .introduce .intr_main .intr_duce .floor2 .gwc_floor {
   margin-top: 1.16rem;

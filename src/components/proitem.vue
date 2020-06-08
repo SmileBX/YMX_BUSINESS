@@ -5,7 +5,7 @@
               <div class="get_coupon">Get Coupon</div>
               <div class="mt2">View detial >></div>
           </div>
-          <img src="" alt="" class="item_img">
+          <img src="../assets/images/pic.png" alt="" class="item_img">
           <div class="item_main">
               <div class="text_flow1 font_bold item_title mt1">Bedsure 金粉世家大棚房管局评估价攀升</div>
               <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
@@ -46,7 +46,6 @@
   @import url("../assets/css/media.less");
   .deal_list{
     margin-top:0.2rem;
-    border:1px solid red;
     flex-wrap: wrap;
   }
   .text_flow1{
@@ -64,7 +63,6 @@
     margin-top:0.39rem;
     font-size:0.14rem;
     position: relative;
-    border:1px solid blue;
   }
   .pro_item:hover .item_mask{
     display: flex;
@@ -86,9 +84,7 @@
     width:60%;
     padding:0.1rem 0;
   }
-  .item_img{
-    border:1px solid red;
-  }
+
   .item_money{
     color:#ff0000;
     font-size:0.16rem;

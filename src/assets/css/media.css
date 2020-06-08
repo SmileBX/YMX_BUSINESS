@@ -1,6 +1,5 @@
 .deal_list {
   margin-top: 0.2rem;
-  border: 1px solid red;
   flex-wrap: wrap;
 }
 @media (min-width: 1400px) {
@@ -14,7 +13,7 @@
     width: 1.7rem;
     height: 1.7rem;
   }
-  .deal .deal_head {
+  .deal .show_pc {
     display: block;
   }
   .deal .show_mobile {
@@ -32,7 +31,7 @@
     width: 2.5rem;
     height: 2.5rem;
   }
-  .deal .deal_head {
+  .deal .show_pc {
     display: block!important;
   }
   .deal .show_mobile {
@@ -50,7 +49,7 @@
     width: 3rem;
     height: 3rem;
   }
-  .deal .deal_head {
+  .deal .show_pc {
     display: block!important;
   }
   .deal .show_mobile {
@@ -68,7 +67,7 @@
     width: 3.8rem;
     height: 3.8rem;
   }
-  .deal .deal_head {
+  .deal .show_pc {
     display: block!important;
   }
   .deal .show_mobile {
@@ -86,7 +85,7 @@
     width: 5rem;
     height: 5rem;
   }
-  .deal .deal_head {
+  .deal .show_pc {
     display: none!important;
   }
   .deal .show_mobile {
@@ -94,7 +93,7 @@
   }
 }
 @media (max-width: 500px) {
-  .deal .deal_head {
+  .deal .show_pc {
     display: none!important;
   }
   .deal .show_mobile {
@@ -161,11 +160,18 @@
 }
 @media (max-width: 500px) {
   .favoite .pro_item {
-    width: 100%;
+    width: 48%;
+  }
+  .favoite .pro_item:nth-child(2n) {
+    margin-right: 0!important;
   }
   .favoite .pro_item .item_img {
-    width: 100%;
-    height: auto;
+    width: 5rem;
+    height: 5rem;
+  }
+  .favoite .clear_btn {
+    height: 1rem!important;
+    line-height: 1rem!important;
   }
 }
 @media (min-width: 1400px) {
@@ -203,6 +209,18 @@
     width: 2.8rem;
     height: 2.8rem;
   }
+  .detail .detail_head {
+    flex-direction: column;
+    align-items: center;
+  }
+  .detail .get_cou,
+  .detail .detail_about,
+  .detail .open_ama {
+    margin: 0.15rem 0;
+  }
+  .detail .comments {
+    width: 100%!important;
+  }
 }
 @media (max-width: 800px) and (min-width: 600px) {
   .detail .pro_item {
@@ -218,11 +236,14 @@
   .detail .comments {
     width: 100%!important;
   }
-  .detail .title,
-  .detail .pro_mention {
-    overflow: hidden!important;
-    white-space: nowrap!important;
-    text-overflow: ellipsis!important;
+  .detail .detail_head {
+    flex-direction: column;
+    align-items: center;
+  }
+  .detail .get_cou,
+  .detail .detail_about,
+  .detail .open_ama {
+    margin: 0.15rem 0;
   }
 }
 @media (max-width: 600px) {
@@ -236,23 +257,22 @@
     width: 5.8rem;
     height: 5.8rem;
   }
-  .detail .detail_img {
-    width: 150px!important;
-    height: 150px!important;
+  .detail .detail_head {
+    flex-direction: column;
+    align-items: center;
   }
-}
-.detail .comments {
-  width: 100%!important;
-}
-.detail .title,
-.detail .pro_mention {
-  overflow: hidden!important;
-  white-space: nowrap!important;
-  text-overflow: ellipsis!important;
-}
-.detail .detail_img {
-  width: 150px!important;
-  height: 150px!important;
+  .detail .get_cou,
+  .detail .detail_about,
+  .detail .open_ama {
+    margin: 0.15rem 0;
+  }
+  .detail .detail_new_left {
+    width: 60%!important;
+    align-items: center;
+  }
+  .detail .comments {
+    width: 100%!important;
+  }
 }
 @media (min-width: 1100px) {
   .bottom_comon {
@@ -375,10 +395,36 @@
   .introduce .intr_duce {
     padding: 1.05rem 1rem 1.6rem 1rem;
   }
+  .introduce .floor1 .vip_card .item_box {
+    width: 49%!important;
+  }
+  .introduce .floor1 .card_item {
+    height: 3.5rem !important;
+    width: 5rem!important;
+  }
 }
-@media (max-width: 880px) {
+@media (max-width: 880px) and (min-width: 600px) {
   .introduce .intr_duce {
     padding: 1.05rem 0 1.6rem 0;
+  }
+  .introduce .floor1 .vip_card .item_box {
+    width: 49%!important;
+  }
+  .introduce .floor1 .card_item {
+    height: 4rem!important;
+    width: 80%!important;
+  }
+}
+@media (max-width: 600px) {
+  .introduce .intr_duce {
+    padding: 1.05rem 0 1.6rem 0;
+  }
+  .introduce .floor1 .vip_card .item_box {
+    width: 100%!important;
+  }
+  .introduce .floor1 .card_item {
+    height: 6rem!important;
+    width: 60%!important;
   }
 }
 @media (min-width: 1400px) {
@@ -448,12 +494,24 @@
     width: 20%;
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 800px) and (min-width: 600px) {
   .mine_vip {
     padding: 0 0.3rem 0 0.6rem;
+    flex-direction: column;
   }
   .mine_vip .mine_menu {
-    width: 4.5rem;
+    display: none!important;
+  }
+  .mine_vip .mine_mobile {
+    display: block!important;
+  }
+  .mine_vip .slider {
+    height: 0.2rem;
+    background: #CCCCCC;
+    margin-top: 1rem;
+  }
+  .mine_vip .mine_box_right {
+    margin-top: 0.8rem;
   }
   .mine_vip .profile .item_name,
   .mine_vip .change_pwd .item_name {
@@ -468,9 +526,168 @@
     width: 30%;
   }
 }
+@media (max-width: 600px) {
+  .mine_vip {
+    padding: 0 0.3rem 0 0.6rem;
+    flex-direction: column;
+  }
+  .mine_vip .mine_menu {
+    display: none!important;
+  }
+  .mine_vip .mine_mobile {
+    display: block!important;
+  }
+  .mine_vip .mine_mobile .four_em_item {
+    width: 25%!important;
+    margin-top: 0.8rem;
+  }
+  .mine_vip .slider {
+    height: 0.2rem;
+    background: #CCCCCC;
+    margin-top: 1rem;
+  }
+  .mine_vip .mine_box_right {
+    margin-top: 0.8rem;
+  }
+  .mine_vip .profile .item_name,
+  .mine_vip .change_pwd .item_name {
+    width: 20%;
+  }
+  .mine_vip .profile .input_box,
+  .mine_vip .change_pwd .input_box {
+    width: 5rem;
+    height: 0.6rem;
+  }
+  .mine_vip .change_pwd .pwd_name {
+    width: 30%;
+  }
+}
+@media (max-width: 1660px) and (min-width: 800px) {
+  .requset .item_submention .desc_item_bototm {
+    width: 50%;
+    margin-right: 0!important;
+    margin-top: 0.1rem;
+  }
+  .requset .desc_long {
+    width: 80%!important;
+  }
+  .requset .desc_shot {
+    width: 20%!important;
+  }
+}
+@media (max-width: 1660px) and (min-width: 800px) and (max-width: 1660px) and (min-width: 1300px) {
+  .requset .buy_now {
+    width: 1rem;
+  }
+}
+@media (max-width: 1660px) and (min-width: 800px) and (max-width: 1300px) and (min-width: 1100px) {
+  .requset .buy_now {
+    width: 1.5rem !important;
+    margin-top: 0.3rem;
+  }
+  .requset .item_right {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 1660px) and (min-width: 800px) and (max-width: 1100px) and (min-width: 800px) {
+  .requset .item_right {
+    width: 30%!important;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0.5rem !important;
+  }
+  .requset .buy_now {
+    margin-top: 0.2rem;
+    width: 2rem!important;
+  }
+}
+@media (max-width: 800px) {
+  .requset .quest_item,
+  .requset .quest_item_right {
+    flex-direction: column!important;
+    width: 100%;
+  }
+  .requset .quset_cen_ll {
+    margin: 0.3rem 0;
+  }
+  .requset .right_quest {
+    margin-top: 0.5rem;
+  }
+  .requset .quest_img {
+    width: 4rem!important;
+    height: 4rem!important;
+  }
+  .requset .item_right {
+    width: 100%!important;
+    margin-left: 0!important;
+    align-items: center;
+    margin-top: 0.5rem;
+    justify-content: center!important;
+  }
+  .requset .item_right .buy_now {
+    height: 0.8rem !important;
+    line-height: 0.8rem !important;
+  }
+  .requset .item_right .mini_seze {
+    display: flex;
+    align-items: center;
+  }
+  .requset .item_right .mini_seze .mini_sese_center {
+    margin: 0 0.5rem;
+  }
+}
+@media (max-width: 800px) and (max-width: 800px) and (min-width: 620px) {
+  .requset .buy_now {
+    width: 2.5rem !important;
+  }
+}
+@media (max-width: 800px) and (max-width: 620px) {
+  .requset .buy_now {
+    width: 3.5rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  .coupon .coupon_card {
+    width: 5.12rem;
+  }
+  .coupon .coupon_card .conpon_main {
+    height: 3.3rem;
+  }
+}
+@media (min-width: 900px) and (max-width: 1200px) {
+  .coupon .coupon_card {
+    width: 7rem;
+  }
+  .coupon .coupon_card .conpon_main {
+    height: 4rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .coupon .coupon_card {
+    width: 8rem;
+  }
+  .coupon .coupon_card .conpon_main {
+    height: 4.8rem;
+  }
+}
+@media (max-width: 600px) {
+  .coupon .coupon_card {
+    width: 9rem;
+  }
+  .coupon .coupon_card .conpon_main {
+    height: 5.5rem;
+  }
+}
 @media (max-width: 800px) {
   .detail,
   .deal {
     padding: 0 0.8rem !important;
+  }
+  .nav_show1 {
+    display: none!important;
+  }
+  .nav_show2 {
+    display: block!important;
   }
 }
