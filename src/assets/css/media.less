@@ -2,6 +2,31 @@
   margin-top:0.2rem;
   flex-wrap: wrap;
 }
+.vip_info{
+  @media (max-width:1100px) and (min-width:800px){
+    .card_item{
+      width:41%!important;
+      height:2.5rem!important;
+      margin-bottom:0.5rem;
+    }
+  }
+  @media (max-width:800px) and (min-width:600px){
+    .card_item{
+      width:40%!important;
+      height:2.5rem!important;
+      margin-bottom:0.5rem;
+    }
+    
+  }
+  @media (max-width:600px){
+    .card_item{
+      width:60%!important;
+      height:3.5rem!important;
+      margin-bottom:0.5rem;
+    }
+    
+  }
+}
 .deal{ //产品分类
   @media (min-width:1400px){
     .pro_item {
@@ -285,6 +310,7 @@
     .home_left{
       width:14rem;
     }
+    
   }
   @media (max-width:1500px)and (min-width:1200px){
     .pro_item {
@@ -302,8 +328,12 @@
     .home_left{
       width:14rem;
     }
+    .right_list_bottom{
+      flex-direction: column!important;
+      align-items: flex-start!important;
+    }
   }
-  @media (max-width:1200px)and (min-width:900px){
+  @media (max-width:1200px)and (min-width:1000px){
     .pro_item {
       width:23.5%;
       &:nth-child(4n){
@@ -319,8 +349,17 @@
     .home_left{
       width:14rem;
     }
+    .right_list_bottom{
+      flex-direction: column!important;
+      align-items: flex-start!important;
+    }
+    .home_price_right{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
-  @media (max-width:900px)and (min-width:600px){
+  @media (max-width:1000px)and (min-width:600px){
     .pro_item {
       width:32%;
       &:nth-child(3n){
@@ -556,6 +595,7 @@
     }
   }
 }
+
 .requset{
   @media (max-width:1660px) and (min-width:800px){
     @media (max-width:1660px) and (min-width:1300px){

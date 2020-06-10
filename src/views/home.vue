@@ -6,19 +6,19 @@
                 <!---大轮播-->
                 <div class="swiper-container swiper_floor1" style="height:4.01rem;">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide">slider1</div>
-                      <div class="swiper-slide">slider2</div>
-                      <div class="swiper-slide">slider3</div>
+                      <div class="swiper-slide" v-for="(item,index) in 4" :key="index">
+                          <img src="../assets/images/imgs/banner.png" alt="" class="banner_img">
+                      </div>
                     </div>
                     <div class="swiper-button-next "></div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div><!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
                 </div>
                 <!--分组轮播1-->
-                <div class="mt5">
+                <div class="mt5 home_banner">
                     <div class="font24 font_bold text_left">FREE TRIAL</div>
                     <div class="swiper-container swiper-container2 mt3 font16">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper swiper_home2">
                             <div class="swiper-slide swiper-slide2" v-for="(item,index) in 10" :key="index">
                                 <div class="pro_item1">
                                     <div class="item_mask font14 flex">
@@ -53,12 +53,13 @@
                         <!-- Add Pagination -->
                         <!-- <div class="swiper-pagination swiper-pagination2"></div> -->
                         <!-- Add Arrows -->
-                        <div class="swiper-button-next swiper-button-next2"></div>
-                        <div class="swiper-button-prev swiper-button-prev2"></div>
+                       
                     </div>
+                    <div class="swiper-button-next swiper-button-next2"></div>
+                    <div class="swiper-button-prev swiper-button-prev2"></div>
                 </div>
                 <!--分组轮播2-->
-                <div class="mt5">
+                <div class="mt5 home_banner">
                     <div class="font24 font_bold text_left">TEN-PERCENT DISCOUNT</div>
                     <div class="swiper-container swiper-container2 mt3 font16">
                         <div class="swiper-wrapper">
@@ -96,9 +97,11 @@
                         <!-- Add Pagination -->
                         <!-- <div class="swiper-pagination swiper-pagination2"></div> -->
                         <!-- Add Arrows -->
-                        <div class="swiper-button-next swiper-button-next2"></div>
-                        <div class="swiper-button-prev swiper-button-prev2"></div>
+                        <!-- <div class="swiper-button-next swiper-button-next2"></div>
+                        <div class="swiper-button-prev swiper-button-prev2"></div> -->
                     </div>
+                    <div class="swiper-button-next swiper-button-next2"></div>
+                    <div class="swiper-button-prev swiper-button-prev2"></div>
                 </div>
                 <!---首页推荐列表-->
                 <div class="mt5">
@@ -125,14 +128,14 @@
                             <img src="../assets/images/pic.png" alt="" class="right_item_img">
                             <div class="flex1 flex flexColumn flexAlignStart justifyContentBetween ml2">
                                 <div class="text_flow font12">DAFENGEA Men's Outdoor Lightweight Breathable Quick Dry Hiking Pants, KZ335...</div>
-                                <div>
+                                <div class="home_price_right">
                                     <span class="font_bold font16">$15.99</span>
                                     <span class="font12">
                                         <s class="font12">$31.99</s>
                                         <span class="color_blood font12">50% Discount</span>
                                     </span>
                                 </div>
-                                <div class="font12 flex justifyContentBetween w100">
+                                <div class="font12 flex justifyContentBetween w100 right_list_bottom">
                                     <div>
                                         <span>
                                             <img src="../assets/images/zan_t.png" alt="" class="com_icon">
@@ -251,7 +254,7 @@ export default{
                 slidesPerView: this.swiperSlider,
                 spaceBetween: 35,
                 slidesPerGroup: this.swiperSlider,
-                // autoplay:false,
+                autoplay:true,
                 // loop: true,
                 loopFillGroupWithBlank: true,
                 // pagination: {
@@ -276,9 +279,9 @@ export default{
     --swiper-navigation-size: 0.8rem;/* 设置按钮大小 */
     outline: none ;
   }
-  .swiper-wrapper{
-    
-  }
+  .swiper-slide .banner_img{
+        width:100%;
+    }
   .swiper-button-prev, .swiper-button-next{
       color:#999999;
   }
@@ -286,7 +289,9 @@ export default{
     width:100%;height:0.3rem;
   }
   .swiper-container2{
-      width:100%;
-      /* border:1px solid black; */
+      width:90%;
+  }
+  .home_banner{
+      position: relative;
   }
 </style>

@@ -158,16 +158,56 @@
     color:#999999;
   }
   .card_item{
-    width:3.36rem;height:1.56rem;
+    width:31%;
+    // width:3.36rem;
+    height:1.56rem;
     border-radius: 0.14rem;
     box-shadow: 0 0.01rem 0.01rem 0.01rem rgba(0,0,0,0.1);
-    padding:0.43rem 0.23rem 0.32rem 0.23rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0 0.23rem;
     &.active{
       background:linear-gradient(135deg,rgba(251,122,106,1),rgba(255,94,109,1));
       color:#ffffff!important;
       .date_time{
         color:#ffffff;
       }
+    }
+  }
+  .vip_list{
+    margin-top:1.29rem;
+    .list_head_nav{
+      background: #586EDB;
+      color:#ffffff;
+      padding:0.1rem 0;
+      div{
+        padding:0 0.2rem;
+        width:16.6%;
+      }
+      .nav_long{
+        width:20%;
+      }
+      .border_left{
+        border-left: 1px solid #ffffff;
+      }
+    }
+    .list_mian{
+      .list_item{
+        padding:0.15rem 0;
+        &:nth-child(even){
+          background:rgba(237,240,254,1);
+        }
+        div{
+          padding:0 0.2rem;
+          width:16.6%;
+          font-size: 0.14rem;
+        }
+        .nav_long{
+          width:25%;
+        }
+      }
+      
     }
   }
 }
