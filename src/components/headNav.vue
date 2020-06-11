@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="nav_head_fix">
       <div class="nav_show1">
         <div class="common_head flex flexAlignCenter justifyContentBetween font_bold ">
             <div class="nav_left flex flexAlignCenter">

@@ -5,8 +5,8 @@
           <div class="mine_account font_bold font18 flex flexColumn flexAlignCenter justifyContentBetween">
             <img src="" alt="" class="img_ava">
             <div class="mt2">Vision_1776829</div>
-            <div>VIP0</div>
-            <div>Edit Profile >></div>
+            <div class="mt2">VIP0</div>
+            <div class="mt1">Edit Profile >></div>
           </div>
           <el-row class="tac boxSize mt2">
             <el-col :span="12">
@@ -54,8 +54,8 @@
           <div class="mine_account font_bold font18 flex flexColumn flexAlignCenter justifyContentBetween">
             <img src="" alt="" class="img_ava">
             <div class="mt2">Vision_1776829</div>
-            <div>VIP0</div>
-            <div>Edit Profile >></div>
+            <div class="mt2">VIP0</div>
+            <div class="mt1">Edit Profile >></div>
           </div>
           <el-menu :default-active="activeIndex" class="el-menu-demo el_mobile_menu" mode="horizontal" @select="choseIndex">
             <el-menu-item index="1" class="flex flexColumn flexAlignCenter four_em_item">

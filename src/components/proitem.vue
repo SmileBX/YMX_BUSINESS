@@ -98,6 +98,7 @@
   }
   .item_title{
     width:100%;
+    text-align: left;
   }
   .item_subtitle{
     margin:0.06rem 0;

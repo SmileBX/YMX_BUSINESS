@@ -439,7 +439,7 @@
 }
 @media (max-width: 880px) and (min-width: 600px) {
   .introduce .intr_duce {
-    padding: 1.05rem 0 1.6rem 0;
+    padding: 1.05rem 0.5rem 1.6rem 0.5rem;
   }
   .introduce .floor1 .vip_card .item_box {
     width: 49%!important;
@@ -451,7 +451,7 @@
 }
 @media (max-width: 600px) {
   .introduce .intr_duce {
-    padding: 1.05rem 0 1.6rem 0;
+    padding: 1.05rem 0.5rem 1.6rem 0.5rem;
   }
   .introduce .floor1 .vip_card .item_box {
     width: 100%!important;

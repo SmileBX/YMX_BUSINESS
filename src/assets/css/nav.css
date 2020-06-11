@@ -1,3 +1,11 @@
+.nav_head_fix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  background: #ffffff;
+}
 .common_head {
   width: 19.2rem;
   height: 0.88rem;

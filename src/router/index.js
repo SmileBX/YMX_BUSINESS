@@ -49,7 +49,7 @@ export default new Router({
       children:[
         {
           path: '/',
-          redirect: 'change'
+          redirect: 'like'
         },
         {
           path: 'change',
