@@ -4,7 +4,7 @@
         <div class="home_main flex">
             <div class="home_left">
                 <!---大轮播-->
-                <div class="swiper-container swiper_floor1" style="height:4.01rem;">
+                <div class="swiper-container swiper_floor1" style="height:4.01rem;width:100%;">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide" v-for="(item,index) in 4" :key="index">
                           <img src="../assets/images/imgs/banner.png" alt="" class="banner_img">
@@ -17,8 +17,8 @@
                 <!--分组轮播1-->
                 <div class="mt5 home_banner">
                     <div class="font24 font_bold text_left">FREE TRIAL</div>
-                    <div class="swiper-container swiper-container2 mt3 font16">
-                        <div class="swiper-wrapper swiper_home2">
+                    <div class="swiper-container swiper-container2 mt3 font16" style="width:90%;">
+                        <div class="swiper-wrapper swiper_home2" >
                             <div class="swiper-slide swiper-slide2" v-for="(item,index) in 10" :key="index">
                                 <div class="pro_item1">
                                     <div class="item_mask font14 flex">
@@ -61,7 +61,7 @@
                 <!--分组轮播2-->
                 <div class="mt5 home_banner">
                     <div class="font24 font_bold text_left">TEN-PERCENT DISCOUNT</div>
-                    <div class="swiper-container swiper-container2 mt3 font16">
+                    <div class="swiper-container swiper-container2 mt3 font16" style="width:90%;">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide swiper-slide2" v-for="(item,index) in 10" :key="index">
                                 <div class="pro_item1">
@@ -207,6 +207,7 @@ export default{
         
     },
     mounted(){
+      this.$emit('header', true);
       new Swiper ('.swiper-container.swiper_floor1', {
         autoplay:true,
         loop: true,
@@ -274,10 +275,14 @@ export default{
 <style lang="less">
 @import url("../assets/css/product.less");
 .swiper-container{
+    width:14rem;
     --swiper-theme-color: #ff6600;
     --swiper-pagination-color: #ff6600;/*两种都可以*/
     --swiper-navigation-size: 0.8rem;/* 设置按钮大小 */
     outline: none ;
+  }
+  .swiper_floor1{
+    width:100%;
   }
   .swiper-slide .banner_img{
         width:100%;

@@ -112,8 +112,8 @@ export default{
     }
   },
   mounted () {
-    this.navIndex = 1;
-    this.$router.push('/home')
+    // this.navIndex = 1;
+    // this.$router.push('/home')
   },
   methods: {
     changeNav(i){

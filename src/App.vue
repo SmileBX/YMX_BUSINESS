@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <Header-nav></Header-nav>
-    <router-view></router-view>
+    <Header-nav v-if="header_show"></Header-nav>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive" v-on:header="header"></router-view>
+    </keep-alive>
+	  <router-view v-if="!$route.meta.keepAlive" v-on:header="header"></router-view>
   </div>
 </template>
 
@@ -10,14 +13,17 @@ export default {
   name: 'App',
   data(){
     return {
-       
-      }
+        header_show:true
+    }
   },
   mounted () {
     
   },
   methods:{
-      
+      //是否显示头部
+      header(bool) {
+        this.header_show = bool;
+      },
   }
 }
 </script>
