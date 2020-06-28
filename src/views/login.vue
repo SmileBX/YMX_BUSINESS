@@ -52,13 +52,16 @@
     data(){
       return{
         query:{
-          email:'2249494851@qq.com',
-          password:'123456'
+          email:'789@qq.com',
+          password:'123'
         }
       }
     },
-    mounted(){
+    created () {
       this.$emit('header', false);
+    },
+    mounted(){
+      
       new Swiper ('.swiper-container', {
         autoplay:true,
         loop: true,

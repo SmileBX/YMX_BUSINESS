@@ -13,7 +13,7 @@ export function userInfo(id, token) {
 
 export function loginName(email, password) {
     return axios({
-        url: "/shop/login?lang=en-us",
+        url: "/common/login?lang=en-us",
         method: "post",
         data: { email, password }
     });

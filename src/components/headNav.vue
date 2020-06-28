@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="nav_center flex flexAlignCenter">
-                <el-dropdown>
+                <!-- <el-dropdown>
                   <span class="el-dropdown-link">
                     All<i class="el-icon-caret-bottom
                     "></i>
@@ -29,11 +29,11 @@
                     <el-dropdown-item disabled>双皮奶</el-dropdown-item>
                     <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
                   </el-dropdown-menu>
-                </el-dropdown>
+                </el-dropdown> -->
                 <div class="flex flexAlignCenter ml2">
-                    <input type="text" placeholder="Search Coupons & Deals" class="input_box font14">
+                    <input type="text" placeholder="Search Coupons & Deals" class="input_box font14" v-model="search_data">
                     <div class="search">
-                      <img src="../assets/images/search.png" alt="" class="icon_search">
+                      <img src="../assets/images/search.png" alt="" class="icon_search" @click="searchData">
                     </div>
                 </div>
             </div>
@@ -98,20 +98,23 @@
           </div>
           <div class="nav_right flex flexAlignCenter font14">
               <img src="../assets/images/tx.png" alt="" class="icon_tx">
-              <div class="sell_center ml2 font12" @click="mineCenter">Seller Center</div>
+              <div class="sell_center ml2 font12 cli_pointer" @click="mineCenter">Seller Center</div>
           </div>
         </div>
       </div>
     </div>
 </template>
 <script>
+import Cookies from "js-cookie";
 export default{
   data(){
     return{
       navIndex:1,
+      search_data:''
     }
   },
   mounted () {
+    this.search_data = ''
     // this.navIndex = 1;
     // this.$router.push('/home')
   },
@@ -135,12 +138,30 @@ export default{
     mineCenter(){
       this.$router.push('/mine')
     },
+    //搜索
+    searchData(){
+      // console.log(this.$route.path,"//////////")
+      if(this.$route.path == '/deal'){
+        this.$root.Bus.$emit('transKey',this.search_data)
+      }else{
+        this.$router.push('/deal')
+        // Cookies.set('search_data',this.search_data)
+         this.$root.Bus.$emit('transKey',this.search_data)
+      }
+    }
   },
   watch: {
     '$route':{
       handler(val,oldval){
-        console.log(val);//新路由信息
-        console.log(oldval);//老路由信息
+        // console.log(val,"666669999999");//新路由信息
+        // console.log(oldval);//老路由信息
+        if(val.path == '/home'){
+          this.navIndex = 1
+        }else if(val.path == '/deal'){
+          this.navIndex = 2
+        }else{
+          this.navIndex = 3
+        }
       },
       // 深度观察监听
       deep: true

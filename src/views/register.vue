@@ -71,8 +71,11 @@ export default{
       }
     }
   },
-  mounted(){
+  created () {
     this.$emit('header', false);
+  },
+  mounted(){
+    
     new Swiper ('.swiper-container', {
       autoplay:true,
       loop: true,
@@ -92,7 +95,7 @@ export default{
     //注册
     register(){
       if(this.val() && this.checked){
-        post('/shop/register?lang=en-us',this.query).then(res=>{
+        post('/common/register?lang=en-us',this.query).then(res=>{
           if(res.code == 0){
             this.$message({
                 message: '注册成功!',
@@ -138,21 +141,24 @@ export default{
 <style>
 @import url("../assets/css/login.css");
 .swiper-container{
-  width: 3.96rem;
-  height:6.20rem;
-  margin: 0.2rem auto;
-  --swiper-theme-color: #ff6600;
-  --swiper-pagination-color: #ffffff;/* 两种都可以 */
-}
-.swiper-slide{
-  width:3.96rem;
-  height:5.56rem;
-  background: #ffffff;
-}
+    width: 3.96rem;
+    /* height:6.20rem; */
+    margin: 0.2rem auto;
+    --swiper-theme-color: #ff6600;
+    --swiper-pagination-color: #ff6600;/* 两种都可以 */
+  }
+  .swiper-slide{
+    width:3.96rem;
+    /* height:5.56rem; */
+    background: #ffffff;
+  }
 
-.swiper-pagination{
-  width:100%;height:0.3rem;
-}
+  .swiper-pagination{
+    width:100%;height:0.3rem;
+  }
+  .join_btn{
+    margin-bottom:0.8rem;
+  }
 .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
     background-color: #3F51B5;
     border-color: #3F51B5;

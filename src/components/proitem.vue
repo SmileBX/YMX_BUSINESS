@@ -1,29 +1,29 @@
 <template>
   <div class="flex deal_list">
-      <div class="pro_item" v-for="(item,index) in 20" :key="index">
+      <div class="pro_item" v-for="(item,index) in data" :key="index">
           <div class="item_mask font14 flex">
               <div class="get_coupon">Get Coupon</div>
               <div class="mt2">View detial >></div>
           </div>
-          <img src="../assets/images/pic.png" alt="" class="item_img">
+          <img :src="item.image" alt="" class="item_img">
           <div class="item_main">
-              <div class="text_flow1 font_bold item_title mt1">Bedsure 金粉世家大棚房管局评估价攀升</div>
+              <div class="text_flow1 font_bold item_title mt1">{{item.name}}</div>
               <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
               <div class="flex justifyContentBetween w100">
                   <div class="flex flex1 ">
-                      <span class="text_through">$109.00</span>
+                      <span class="text_through">${{item.currency_price}}</span>
                       <span class="item_spill">-50%</span>
                   </div>
-                  <div class="item_money">$54.50</div>
+                  <div class="item_money">${{item.price}}</div>
               </div>
               <div class="flex justifyContentBetween mt1 w100 color_9">
                 <div class="flex flexAlignCenter">
                     <img src="../assets/images/zan.png" alt="" class="icon_zan">
-                    <span class="ml1">11</span>
+                    <span class="ml1">{{item.review}}</span>
                 </div>
                 <div class="flex flexAlignCenter">
                   <img src="../assets/images/comment.png" alt="" class="icon_mes">
-                    <span class="ml1">0</span>
+                    <span class="ml1">{{item.fabulous_count}}</span>
                 </div>
               </div>
           </div>
@@ -32,6 +32,7 @@
 </template>
 <script>
   export default{
+    props:['data'],
     data(){
       return{
         activeIndex:"1",

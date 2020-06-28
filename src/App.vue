@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <Header-nav v-if="header_show"></Header-nav>
-    <keep-alive>
+    <!-- <keep-alive>
       <router-view v-if="$route.meta.keepAlive" v-on:header="header"></router-view>
     </keep-alive>
-	  <router-view v-if="!$route.meta.keepAlive" v-on:header="header"></router-view>
+    <router-view v-if="!$route.meta.keepAlive" v-on:header="header"></router-view> -->
+    <router-view v-on:header="header"></router-view>
   </div>
 </template>
 
@@ -13,7 +14,7 @@ export default {
   name: 'App',
   data(){
     return {
-        header_show:true
+        header_show:true,
     }
   },
   mounted () {
