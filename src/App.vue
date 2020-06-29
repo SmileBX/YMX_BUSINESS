@@ -25,7 +25,10 @@ export default {
       header(bool) {
         this.header_show = bool;
       },
-  }
+  },
+  updated() {
+    window.scroll(0, 0);
+  },
 }
 </script>
 

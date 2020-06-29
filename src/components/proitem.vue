@@ -3,7 +3,7 @@
       <div class="pro_item" v-for="(item,index) in data" :key="index">
           <div class="item_mask font14 flex">
               <div class="get_coupon">Get Coupon</div>
-              <div class="mt2">View detial >></div>
+              <div class="mt2 cli_pointer" @click="viewDetail(item)">View detial >></div>
           </div>
           <img :src="item.image" alt="" class="item_img">
           <div class="item_main">
@@ -38,8 +38,10 @@
         activeIndex:"1",
       }
     },
-    mthods:{
-      
+    methods:{
+      viewDetail(item){
+        this.$emit('success',item.id)
+      }
     }
   }
 </script>

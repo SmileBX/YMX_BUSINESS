@@ -46,7 +46,7 @@
                       <img src="../assets/images/down.png" alt="" class="icon_down ml1">
                     </div>
                 </div>
-                <div class="sell_center ml2 font12" @click="mineCenter">Seller Center</div>
+                <div class="sell_center ml2 font12 cli_pointer" @click="mineCenter">Seller Center</div>
             </div>
         </div>
       </div>

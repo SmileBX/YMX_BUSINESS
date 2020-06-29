@@ -105,6 +105,7 @@ input{
 .login_right{
   width:45%;
   margin-top:1.5rem;
+  padding:0 0.5rem;
 }
 .swiper_side .login_ava{
   width:1.6rem;

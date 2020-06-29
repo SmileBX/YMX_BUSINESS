@@ -4,7 +4,7 @@
         <div class="home_main flex">
             <div class="home_left">
                 <!---大轮播-->
-                <div class="swiper-container swiper_floor1" style="height:4.01rem;width:100%;">
+                <div class="swiper-container swiper_floor1" style="height:4.01rem;width:14rem;">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide" v-for="(item,index) in bannerList" :key="index">
                           <img :src="item.image" alt="" class="banner_img">
@@ -17,13 +17,13 @@
                 <!--分组轮播1-->
                 <div class="mt5 home_banner">
                     <div class="font24 font_bold text_left">FREE TRIAL</div>
-                    <div class="swiper-container swiper-container2 mt3 font16" style="width:90%;">
+                    <div class="swiper-container swiper-container2 mt3 font16" style="width:90%;" v-if="hasSwiper">
                         <div class="swiper-wrapper swiper_home2" >
-                            <div class="swiper-slide swiper-slide2" v-for="(item2,index2) in floor1data.list" :key="index2">
+                            <div class="swiper-slide swiper-slide2" v-for="(item2,index2) in floor1data" :key="index2" >
                                 <div class="pro_item1">
                                     <div class="item_mask font14 flex">
                                         <div class="get_coupon">Get Coupon</div>
-                                        <div class="mt2">View detial >></div>
+                                        <div class="mt2 cli_pointer" @click="detail(item2)">View detial >></div>
                                     </div>
                                     <img :src="item2.image" alt="" class="item_img">
                                     <div class="item_main">
@@ -61,13 +61,13 @@
                 <!--分组轮播2-->
                 <div class="mt5 home_banner">
                     <div class="font24 font_bold text_left">TEN-PERCENT DISCOUNT</div>
-                    <div class="swiper-container swiper-container2 mt3 font16" style="width:90%;">
+                    <div class="swiper-container swiper-container3 mt3 font16" style="width:90%;">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide swiper-slide2" v-for="(item3,index3) in floor2data.list" :key="index3">
+                            <div class="swiper-slide swiper-slide2" v-for="(item3,index3) in floor2data" :key="index3" >
                                 <div class="pro_item1">
                                     <div class="item_mask font14 flex">
                                         <div class="get_coupon">Get Coupon</div>
-                                        <div class="mt2">View detial >></div>
+                                        <div class="mt2 cli_pointer" @click="detail(item3)">View detial >></div>
                                     </div>
                                     <img :src="item3.image" alt="" class="item_img">
                                     <div class="item_main">
@@ -94,20 +94,16 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Add Pagination -->
-                        <!-- <div class="swiper-pagination swiper-pagination2"></div> -->
-                        <!-- Add Arrows -->
-                        <!-- <div class="swiper-button-next swiper-button-next2"></div>
-                        <div class="swiper-button-prev swiper-button-prev2"></div> -->
+                        
                     </div>
-                    <div class="swiper-button-next swiper-button-next2"></div>
-                    <div class="swiper-button-prev swiper-button-prev2"></div>
+                    <div class="swiper-button-next swiper-button-next3"></div>
+                    <div class="swiper-button-prev swiper-button-prev3"></div>
                 </div>
                 <!---首页推荐列表-->
                 <div class="mt5" v-for="(item4,index4) in proList">
                     <div class="font24 font_bold text_left"  v-if="item4.list.length>0">{{item4.us_title}}</div>
                     <div class="pw2" v-if="item4.list.length>0">
-                        <proItem :data="item4.list"></proItem>
+                        <proItem :data="item4.list" @success="toDetail"></proItem>
                     </div>
                 </div>
                 <!--seemore-->
@@ -124,7 +120,7 @@
                         <div class="color_red cli_pointer" @click="showMore">More</div>
                     </div>
                     <div class="mt4 right_list">
-                        <div class="right_item flex justifyContentBetween" v-for="(item,key) in rightList" :key="key">
+                        <div class="right_item flex justifyContentBetween cli_pointer" v-for="(item,key) in rightList" :key="key" @click="detail(item)">
                             <img :src="item.image" alt="" class="right_item_img">
                             <div class="flex1 flex flexColumn flexAlignStart justifyContentBetween ml2">
                                 <div class="text_flow font12">{{item.name}}</div>
@@ -188,7 +184,8 @@ export default{
             floor1data:[],
             floor2data:[],
             proList:[],
-            rightList:[]
+            rightList:[],
+            hasSwiper:false
         }
     },
     components:{
@@ -215,21 +212,8 @@ export default{
         
     },
     mounted(){
-      new Swiper ('.swiper-container.swiper_floor1', {
-        autoplay:true,
-        loop: true,
-        // 如果需要分页器
-        pagination: {
-          el:'.swiper-pagination',
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-      }) 
-      this.reSetWindow()
-      this.changeSlider()
-      
+        this.reSetWindow()
+        this.changeSlider()
     },
     created () {
         this.$emit('header', true);
@@ -237,6 +221,25 @@ export default{
         this.getAllList()//所有的产品 分类轮播 右侧列表
     },
     methods:{
+        //初始化顶部萝卜兔
+        initBanner(){
+            new Swiper ('.swiper-container.swiper_floor1', {
+                autoplay:true,
+                loop: true,
+                observer:true,
+                // 如果需要分页器
+                pagination: {
+                el:'.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            }) 
+        },
+        initFloor(){
+
+        },
         //所有关于产品的列表
         getAllList(){
             let query = {
@@ -244,12 +247,16 @@ export default{
             }
             post('/goods/goods_index',query).then(res=>{
                 if(res.code == 0){
+                    let _this = this
                     this.rightList = res.data.weekly_hot_deal
-                    this.floor1data = res.data.cate_list[0]
-                    this.floor2data = res.data.cate_list[1]
+                    this.floor1data = res.data.cate_list[0].list
+                    this.floor2data = res.data.cate_list[1].list
                     this.proList = res.data.cate_list.slice(2)
                     console.log(this.floor1data,"111111111111")
-                    console.log(this.proList,"22222222222222")
+                    console.log(this.floor2data,"22222222222222")
+                    this.$nextTick(function () {
+                        _this.initSwiperGroup()
+                    })
                 }
             })
         },
@@ -261,7 +268,11 @@ export default{
             }
             post('common/getbanner',query).then(res=>{
                 if(res.code == 0){
+                    let _this = this
                     this.bannerList = res.data
+                    this.$nextTick(function () {
+                        _this.initBanner()
+                    })
                 }
             })
         },
@@ -269,8 +280,25 @@ export default{
         showMore(){
             this.$router.push('/deal')
         },
+        //商品详情
+        detail(item){
+            this.$router.push({
+                path:'/detail',
+                query:{
+                    id:item.id
+                }
+            })
+        },
+        toDetail(id){
+            this.$router.push({
+                path:'/detail',
+                query:{
+                    id:id
+                }
+            })
+        },
         changeSlider(){
-            // console.log(this.screenWidth,"333333333333333333333333")
+            console.log(this.screenWidth,"333333333333333333333333")
             if(this.screenWidth>1500){
                 this.swiperSlider = 6
             }else if(this.screenWidth<1500 && this.screenWidth>1200){
@@ -282,7 +310,7 @@ export default{
             }else{
                 this.swiperSlider = 2
             }
-            // console.log(this.swiperSlider,"llllllllllllllll")
+            console.log(this.swiperSlider,"llllllllllllllll")
             this.$nextTick(()=>{
                 this.initSwiperGroup()
             })
@@ -296,10 +324,13 @@ export default{
             }
         },
         initSwiperGroup(){
+            console.log("8585858585")
+            this.hasSwiper = true
             new Swiper('.swiper-container.swiper-container2', {
                 slidesPerView: this.swiperSlider,
-                spaceBetween: 35,
-                slidesPerGroup: this.swiperSlider,
+                spaceBetween: 30,
+                observer:true,
+                // slidesPerGroup: this.swiperSlider,
                 autoplay:true,
                 // loop: true,
                 loopFillGroupWithBlank: true,
@@ -311,6 +342,25 @@ export default{
                     nextEl: '.swiper-button-next.swiper-button-next2',
                     prevEl: '.swiper-button-prev.swiper-button-prev2',
                 },
+                
+            }); 
+            new Swiper('.swiper-container.swiper-container3', {
+                slidesPerView: this.swiperSlider,
+                spaceBetween: 30,
+                observer:true,
+                // slidesPerGroup: this.swiperSlider,
+                autoplay:true,
+                // loop: true,
+                loopFillGroupWithBlank: true,
+                // pagination: {
+                //     el: '.swiper-pagination.swiper-pagination2',
+                //     clickable: true,
+                // },
+                navigation: {
+                    nextEl: '.swiper-button-next.swiper-button-next3',
+                    prevEl: '.swiper-button-prev.swiper-button-prev3',
+                },
+                
             });   
         }
     }
@@ -320,7 +370,7 @@ export default{
 <style lang="less">
 @import url("../assets/css/product.less");
 .swiper-container{
-    width:14rem;
+    /* width:14rem; */
     --swiper-theme-color: #ff6600;
     --swiper-pagination-color: #ff6600;/*两种都可以*/
     --swiper-navigation-size: 0.8rem;/* 设置按钮大小 */
@@ -329,12 +379,14 @@ export default{
   .swiper_floor1{
     width:100%;
   }
-  .swiper-slide .banner_img{
+  .swiper_floor1 .swiper-slide .banner_img{
         width:100%;
     }
   .swiper-button-prev, .swiper-button-next{
       color:#999999;
+      outline: none;
   }
+
   .swiper-pagination{
     width:100%;height:0.3rem;
   }

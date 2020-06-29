@@ -3,10 +3,10 @@
       <!---左侧组件-->
       <div class="mine_menu">
           <div class="mine_account font_bold font18 flex flexColumn flexAlignCenter justifyContentBetween">
-            <img src="" alt="" class="img_ava">
-            <div class="mt2">Vision_1776829</div>
-            <div class="mt2">VIP0</div>
-            <div class="mt1">Edit Profile >></div>
+            <img :src="avtar" alt="" class="img_ava">
+            <div class="mt2">{{username}}</div>
+            <div class="mt2">{{level_name}}</div>
+            <div class="mt1 cli_pointer" @click="toProfile">Edit Profile >></div>
           </div>
           <el-row class="tac boxSize mt2">
             <el-col :span="12">
@@ -25,7 +25,8 @@
                 </el-menu-item>
                 <el-menu-item index="3">
                   <i class="el-icon-s-opportunity"></i>
-                  <el-badge :value="200" :max="99" class="item ">
+                  <!-- <el-badge :value="2" :max="99" class="item "> -->
+                  <el-badge  class="item ">
                     Notification
                   </el-badge>
                 </el-menu-item>
@@ -100,10 +101,15 @@
   </div>
 </template>
 <script>
+  import {post,get} from '@/api/axios.js'
+  import {getToken} from '@/utils/auth.js'
     export default {
     data(){
       return{
         activeIndex:"1",
+        username:'',
+        avtar:'',
+        level_name:''
       }
     },
     created(){
@@ -112,8 +118,29 @@
       }else{
         this.activeIndex="1"
       }
+      this.getUserInfo()
     },
     methods: {
+      getUserInfo(){
+            let query = {
+                user_token:getToken()
+            }
+            post('user/getuserinfo',query).then(res=>{
+                if(res.code == 0){
+                    this.username = res.data.username
+                    this.level_name = res.data.level_name
+                    this.avtar = res.data.avtar
+                    
+                }
+            })
+        },
+        toProfile(){
+          this.$router.push({
+            path:"/mine/edit",
+            query:{
+              type:5,
+        }})
+        },
       choseIndex(key, keyPath){
         this.activeIndex = key
         let urlPath = ''

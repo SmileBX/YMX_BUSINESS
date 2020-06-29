@@ -3,11 +3,11 @@
  */
 import axios from "./axios";
 // 获取信息
-export function userInfo(id, token) {
+export function userInfo(user_token) {
     return axios({
-        url: "/admin/auth/login/userInfo",
-        method: "get",
-        params: { id, token }
+        url: "/user/getuserinfo?lang=en-us",
+        method: "post",
+        params: { user_token }
     });
 }
 

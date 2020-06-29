@@ -63,9 +63,9 @@ const store =new Vuex.Store({
                     });
             });
         },
-        userInfo({ commit }) {
+        userInfo({ commit },token) {
             return new Promise((resolve, reject) => {
-                userInfo()
+                userInfo(token)
                     .then(response => {
                         if (response.code === 2) {
                             reject("登录失效");

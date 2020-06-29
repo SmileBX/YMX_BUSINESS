@@ -30,7 +30,7 @@
               </div>
           </div>
           <div class="login_right swiper_box" >
-            <div class="swiper-container">
+            <div class="swiper-container" style="width:80%; height:6.20rem;">
               <div class="swiper-wrapper">
                   <div class="swiper-slide swiper_side flex flexColumn flexAlignCenter" v-for="(item,index) in 5" :key="index">
                       <img src="../assets/images/ttx.png" alt="" class="login_ava">
@@ -39,7 +39,7 @@
                       <div class="join_btn font14">Join now</div> 
                   </div>
               </div>
-              <div class="swiper-pagination"></div><!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
+              <div class="swiper-pagination" ></div><!--分页器。如果放置在swiper-container外面，需要自定义样式。-->
             </div>
           </div>
         </div>
@@ -116,14 +116,14 @@
 <style>
 @import url("../assets/css/login.css");
 .swiper-container{
-    width: 3.96rem;
+    /* width: 3.96rem; */
     /* height:6.20rem; */
     margin: 0.2rem auto;
     --swiper-theme-color: #ff6600;
     --swiper-pagination-color: #ff6600;/* 两种都可以 */
   }
   .swiper-slide{
-    width:3.96rem;
+    /* width:3.96rem; */
     /* height:5.56rem; */
     background: #ffffff;
   }
@@ -133,5 +133,8 @@
   }
   .join_btn{
     margin-bottom:0.8rem;
+  }
+  .login_form .form_item{
+    height:0.4rem;line-height: 0.4rem;
   }
 </style>

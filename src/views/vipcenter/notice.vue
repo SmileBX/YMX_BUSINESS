@@ -1,56 +1,109 @@
 <template>
   <div>
-      <div v-if="hasData" class="notice">
+      <div class="notice">
           <div class="text_left font_bold pp2 font18 color_red ">Notifications</div>
-          <div class="notice_list pw2">
-              <div class="notice_item p2 flex flexAlignCenter font16" v-for="(item,index) in 5" :key="index">
-                  <div class="img_icon">
-                      <!-- <img src="../../assets/images/pro.png" alt="" class="img1"> -->
-                      <img src="../../assets/images/msg.png" alt="" class="img2">
-                      <!-- <img src="../../assets/images/share.png" alt="" class="img3"> -->
-                  </div>
-                  <div class="content_notice">
-                      <div class="flex flexAlignCenter">
-                          <div>Removal reminder</div>
-                          <span class="font14 color_9 ml2">2020.05.12 12:47</span>
-                      </div>   
-                      <div class="mt2">[
-                          <span class="color_blue text_underline">Power Bank 10000mAh Portable Charger with Dual Out...</span>
-                          ]will be removed in three days, please go to renew.</div>
-                  </div>
-              </div>
+          <div v-if="hasData" >
+            <div class="notice_list pw2" >
+                <div class="notice_item p2 flex flexAlignCenter font16" v-for="(item,index) in 5" :key="index">
+                    <div class="img_icon">
+                        <!-- <img src="../../assets/images/pro.png" alt="" class="img1"> -->
+                        <img src="../../assets/images/msg.png" alt="" class="img2">
+                        <!-- <img src="../../assets/images/share.png" alt="" class="img3"> -->
+                    </div>
+                    <div class="content_notice">
+                        <div class="flex flexAlignCenter">
+                            <div>Removal reminder</div>
+                            <span class="font14 color_9 ml2">2020.05.12 12:47</span>
+                        </div>   
+                        <div class="mt2">[
+                            <span class="color_blue text_underline">Power Bank 10000mAh Portable Charger with Dual Out...</span>
+                            ]will be removed in three days, please go to renew.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="block mt5">
+              <el-pagination
+                @current-change="handleCurrentChange"
+                :current-page.sync="query.page"
+                :page-size="query.list_rows"
+                layout="prev, pager, next, jumper"
+                :total="total">
+              </el-pagination>
+            </div>
           </div>
-          <div class="block mt5">
-            <el-pagination
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              :current-page.sync="currentPage3"
-              :page-size="5"
-              layout="prev, pager, next, jumper"
-              :total="12">
-            </el-pagination>
-          </div>
+          <div v-else class="font16 nodata font_bold">You have not received any notifications yet.</div>
       </div>
-      <div v-else class="font16 nodata font_bold">You have not received any notifications yet.</div>
+      
   </div>
 </template>
 <script>
-export default{
-  data(){
-    return{
-      currentPage3: 1,
-      hasData:true
-    }
-  },
-  methods: {
-      handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
+  import {get,post} from '@/api/axios.js'
+  import {getToken} from '@/utils/auth.js'
+  export default{
+    data(){
+      return{
+        hasData:true,
+        total:0,
+        newslist:[],
+        query:{
+          user_token:getToken(),
+          list_rows:5,
+          page:1
+        }
       }
     },
-}
+    created () {
+      this.innerGetContent()
+    },
+    watch: {
+        $route() {
+          this.type = this.$route.query.type;
+          // this.getList()
+          this.innerGetContent()
+          // console.log(this.type,",,,,,,,,,,,,,")
+        }
+    },
+    methods: {
+      innerGetContent() {
+          let pramas = this.$route.query;
+          if (pramas.list_rows) {
+            this.query.list_rows = parseInt(pramas.list_rows)
+          }
+          if (pramas.page) {
+            this.query.page = parseInt(pramas.page)
+          } else {
+            this.query.page = 1
+          }
+          this.getNewsList()
+        },
+        handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+          this.$router.push({
+            path: "/index/notice",
+            query:{
+              page:val,//访问页码
+              list_rows:this.query.list_rows
+            }
+          });
+        },
+        getNewsList(){
+          post('user/user_notice',this.query).then(res=>{
+            if(res.code == 0){
+              this.total = res.data.total
+              if(res.data.total>0){
+                this.hasData = true
+              }else{
+                this.hasData = false
+              }
+              this.newslist = res.data
+            }
+          }).catch((err)=>{})
+        },
+        handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+        }
+      },
+  }
 </script>
 <style lang="less">
  @import url("../../assets/css/mine.less");
@@ -63,6 +116,6 @@ export default{
   .nodata{
     height:calc(100vh - 0.89rem - 0.6rem);
     box-sizing: border-box;
-    padding-top:4rem;
+    padding-top:3rem;
   }
 </style>
