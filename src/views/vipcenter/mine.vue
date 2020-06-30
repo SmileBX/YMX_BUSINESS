@@ -19,10 +19,10 @@
                   <i class="el-icon-s-platform"></i>
                   <span slot="title">Favorites</span>
                 </el-menu-item>
-                <el-menu-item index="2">
+                <!-- <el-menu-item index="2">
                   <i class="el-icon-shopping-cart-2"></i>
                   <span slot="title">Deal Requested</span>
-                </el-menu-item>
+                </el-menu-item> -->
                 <el-menu-item index="3">
                   <i class="el-icon-s-opportunity"></i>
                   <!-- <el-badge :value="2" :max="99" class="item "> -->
@@ -63,13 +63,13 @@
               <i class="el-icon-s-platform"></i>
               <span slot="title">Favorites</span>
             </el-menu-item>
-            <el-menu-item index="2" class="flex flexColumn flexAlignCenter four_em_item">
+            <!-- <el-menu-item index="2" class="flex flexColumn flexAlignCenter four_em_item">
               <i class="el-icon-shopping-cart-2"></i>
               <span slot="title">Deal Requested</span>
-            </el-menu-item>
+            </el-menu-item> -->
             <el-menu-item index="3" class="flex flexColumn flexAlignCenter four_em_item">
               <i class="el-icon-s-opportunity"></i>
-              <el-badge :value="200" :max="99" class="item mobile_badeg">
+              <el-badge  :max="99" class="item mobile_badeg">
                 Notification
               </el-badge>
               <!-- <span slot="title">Notification</span> -->
@@ -142,6 +142,7 @@
         }})
         },
       choseIndex(key, keyPath){
+        // console.log(key,"key")
         this.activeIndex = key
         let urlPath = ''
         // console.log(this.activeIndex,"activeIndex")

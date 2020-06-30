@@ -153,11 +153,11 @@ export default{
   watch: {
     '$route':{
       handler(val,oldval){
-        // console.log(val,"666669999999");//新路由信息
+        console.log(val.path,"666669999999");//新路由信息
         // console.log(oldval);//老路由信息
         if(val.path == '/home'){
           this.navIndex = 1
-        }else if(val.path == '/deal'){
+        }else if(val.path == '/deal' || val.path == '/detail'){
           this.navIndex = 2
         }else{
           this.navIndex = 3
