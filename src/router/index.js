@@ -112,6 +112,30 @@ export default new Router({
             title: 'Deal Requested'
           }
         },
+        {
+          path: 'submit',
+          name: 'submitorder',
+          component: () =>import('../views/pay/submit.vue'),
+          meta: {
+            title: '提交订单'
+          }
+        },
+        {
+          path: 'pay',
+          name: 'payment',
+          component: () => import('../views/pay/payment.vue'),
+          meta: {
+            title: '支付订单'
+          }
+        },
+        {
+          path: 'over',
+          name: 'pausuccess',
+          component: () => import('../views/pay/success.vue'),
+          meta: {
+            title: '支付完成'
+          }
+        }
       ]
     },
   ]

@@ -1,0 +1,70 @@
+/* 支付流程相关 */
+.submit_order{}
+.submit_order{
+  margin:0.85rem 1.35rem;
+}
+.submit_list{
+  padding:0 0.4rem;
+}
+.submit_list .submit_pay{
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  width:95%;
+}
+.submit_pay>div{
+  width:25%;
+}
+.sub_item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0.1rem 0;
+}
+.submit_color{
+  color:#E64A19
+}
+.sub_men_left{
+  margin-left:0.5rem;
+}
+.step1_btn{
+  background: #2D8CF0;
+  color:#ffffff;
+  display: inline-block;
+  width:1.4rem;
+  height:0.36rem;
+  line-height: 0.36rem;
+  text-align: center;
+  border-radius: 0.03rem;
+}
+.pay_active{
+  border-bottom:0.03rem solid #303F9F;
+}
+.payment_item{
+  display: inline-block;
+  margin-right:0.6rem;
+  padding:0.15rem 0;
+}
+.pay_logo{
+  width:1.55rem;
+  height:0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -0.01rem 0.01rem 0.05rem 0.01rem rgba(0,0,0,0.1);
+}
+.pay_logo img{
+  width:1.2rem;height:0.3rem;
+}
+.card_pay{
+  margin-right:0.5rem;
+}
+.color_lignblue{
+  color:#2D8CF0;
+}
+.success_icon{
+  width:0.26rem;height:0.26rem;
+}
+.success_toast{
+  margin:0.45rem 0;
+}

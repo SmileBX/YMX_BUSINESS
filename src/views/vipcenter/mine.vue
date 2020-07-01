@@ -175,7 +175,7 @@
 <style lang="less">
   @import url("../../assets/css/mine.less");
   .el-col{
-    width:100%;
+    width:100%!important;
   }
   .el-submenu__title{
 
@@ -219,5 +219,12 @@
   }
   .mobile_badeg .el-badge__content.is-fixed{
       right:-0.5rem;top:-0.2rem;
+  }
+  .el-menu-vertical-demo.el-menu{
+    border-right:0;
+    width:100%;
+  }
+  .el-menu-item.is-active,.el-menu-item.is-active{
+    color:#FD6A6C!important;
   }
 </style>

@@ -57,7 +57,7 @@
             </div>
             <div class="flex flexAlignCenter form_item">
                 <span class="item_name">City</span>
-                <div class="input_box item_right g_b_w p0">
+                <div class="input_box item_right g_b_w">
                     <!-- <div class="city_box">
                         <div style="overflow: hidden" class="flex">
                           <div class="select-l g-f-l">
@@ -82,7 +82,7 @@
                         </div>
                         <a href="javascript:;" @click="submitCity()">提交</a>
                     </div> -->
-                    <input type="text" v-model="query.profession">
+                    <input type="text"  v-model="query.profession">
                 </div>
             </div>
             <div class="flex flexAlignCenter form_item">
@@ -92,7 +92,7 @@
                 </div>
             </div>
       </div>
-      <div class="confirm" @click="submit">Confirm</div>
+      <div class="confirm cli_pointer" @click="submit">Confirm</div>
   </div>
 </template>
 <script> 
@@ -286,12 +286,16 @@ export default{
 </script>
 <style lang="less">
 @import url("../../assets/css/mine.less");
+    input{
+        padding:0!important;
+    }
+    
 .el-radio__input.is-checked .el-radio__inner{
     border-color:  #FD6A6C!important;
     background-color:  #FD6A6C!important;
   }
   .el-radio__input.is-checked+.el-radio__label{
-    color: #FD6A6C;
+    color: #FD6A6C!important;
   }
   .el-input__icon.el-icon-date{
     /* display: none; */
@@ -301,23 +305,26 @@ export default{
       width:100%!important;
   }
   .el-input__inner{
-      height:0.4rem;
-      border:none;
-      width:100%;
-      padding:0 0.2rem;
+      height:0.4rem!important;
+      border:none!important;
+      width:100%!important;
+      padding:0 0.2rem!important;
   }
   .el-input--prefix .el-input__inner{
-      padding:0;
+      padding:0!important;
   }
   .el-input__icon{
-      line-height:0.4rem;
+      line-height:0.4rem!important;
+  }
+  .el-input__suffix-inner{
+      display: none!important;
   }
   .el-input__prefix{
-    right:0;
-    left:90%;
+    right:0!important;
+    left:90%!important;
   }
   .city_box{
-     display: flex;
+     display: flex!important;
   }
   .el-upload.el-upload--picture-card{
     width:0.8rem;height:0.8rem;border-radius:50%;
@@ -325,10 +332,10 @@ export default{
     display: flex;justify-content: center;align-items: center;
   }
   .el-upload--picture-card i{
-      font-size:0.25rem;
+      font-size:0.25rem!important;
   }
   .icon_avatar{
-      margin-right:0.2rem;
+      margin-right:0.2rem!important;
   }
   .g_b_w{
       width:35%!important;
@@ -336,6 +343,9 @@ export default{
   .p0{
       padding:0!important;
   }
+
+
+
   .g-f-l{
     float: left;
     }

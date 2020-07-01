@@ -24,27 +24,35 @@
                     </div>
                     <div class="vip_list">
                         <div class="flex list_head_nav justifyContentBetween font_bold">
-                            <div class="">VIP</div>
-                            <div class="border_left ">Discount</div>
+                            <div class="">title</div>
+                            <div class="border_left ">Optional discount</div>
                             <div class="border_left ">Times</div>
+                            <div class="border_left ">Monthly fee</div>
+                            <div class="border_left ">Quarter fee</div>
                             <div class="border_left ">Fee</div>
-                            <div class="nav_long border_left">Detailed introduction</div>
-                            <div class="border_left">Get</div>
+                            <div class="border_left">Is_get</div>
                         </div>
                         <div class="list_mian ">
-                            <div class="flex   justifyContentBetween list_item" v-for="(item,key) in 6" :key="key">
-                                <div class="">VIP{{key}}</div>
+                            <div class="flex   justifyContentBetween list_item" v-for="(item,key) in vipList" :key="key">
+                                <div class="">{{item.title}}</div>
                                 <div >
-                                    <span class="color_red">30%</span>
+                                    <span class="color_red">{{item.discount}}%</span>
                                     off and above
-                            </div>
-                                <div >3 Times for free</div>
-                                <div >
-                                    <span class="color_red">18</span>
-                                    USD / YEAR
                                 </div>
-                                <div class="nav_long">Introduction of VIP1</div>
-                                <div class="color_red text_underline">Use</div>
+                                <div >{{item.times}} Times for free</div>
+                                <div >
+                                    <span class="color_red">{{item.month_fee}}</span>
+                                    USD / Month
+                                </div>
+                                <div >
+                                    <span class="color_red">{{item.quarter_fee}}</span>
+                                    USD / Quarter
+                                </div>
+                                <div >
+                                    <span class="color_red">{{item.fee}}</span>
+                                    USD / Year
+                                </div>
+                                <div class="color_red text_underline cli_pointer" @click="makeOrder(item)">{{item.is_get==0?'Get':'Use'}}</div>
                             </div>
                         </div>
                     </div>
@@ -89,28 +97,54 @@
 <script>
 import Swiper from 'swiper';
 import foot from '../../components/foot.vue';
+import {get,post} from '@/api/axios.js'
+import {getToken} from '@/utils/auth.js'
+import { getStore, setStore, removeStore } from "@/utils/store";
 export default{
-  data(){
-      return{
-          
-          
-      }
-  },
-  components:{
-      foot
-  },
-  watch:{
-      
-     
-      
-  },
-  mounted(){
-    
-  },
-  methods:{
+    data(){
+        return{
+            query:{
+                user_token:getToken()
+            },
+            vipList:[],
+            level_info:{},
+        }
+    },
+    created () {
+        removeStore('vip_level')
+        this.getVipList()
+    },
+    components:{
+        foot  
+    },
+    watch:{
         
-      
-  }
+        
+        
+    },
+    mounted(){
+        
+    },
+    methods:{
+        getVipList(){
+            post('/user/vip?lang=en-us',this.query).then(res=>{
+                if(res.code == 0){
+                    this.vipList = res.data.list
+                    this.level_info = res.data.level_info
+                }
+            }).catch((err)=>{})
+        },
+        //展示订单
+        makeOrder(item){
+            if(item.is_get==0){
+                setStore('vip_level',item)
+                this.$router.push({
+                path:'/mine/submit'
+                })
+            }
+        }   
+        
+    }
 
 }
 </script>
