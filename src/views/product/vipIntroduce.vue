@@ -3,21 +3,21 @@
       <!--主内容区域-->
       <div class="intr_main">
             <div class="img_bg">
-                <img src="" alt="">
+                <img :src="top_img" alt="">
             </div>
             <div class="intr_duce">
                 <!--What is Customer Vip-->
                 <div class="floor1">
                     <div class="name_title">What is Customer Vip</div>
                     <div class="vip_card flex flexWrap justifyContentBetween">
-                        <div v-for="(item,index) in 6" class="item_box">
+                        <div v-for="(item,index) in vipList" class="item_box">
                             <div class="card_item flex flexColumn flexAlignCenter justifyContentAround" :class="{'active':index==0}">
                                 <img src="../../assets/images/vip1.png" alt="" 
                             class="card_logo" v-if="index==0">
                                 <img src="../../assets/images/vip2.png" alt="" 
                                 class="card_logo" v-else>
-                                <div class="font_bold">FREE</div>
-                                <div class="font14">Three chances to claim coupon code</div>
+                                <div class="font_bold">{{item.title}}</div>
+                                <div class="font14">{{item.introduction}}</div>
                                 <div class="get color_red text_underline">GET</div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <div class="color_red font30">Sellers Share Deals</div>
                             <div class="font14 text_flow1">Amazon sellers share deals and coupons for a huge selection of products, most 50% off or more.</div>
                         </div>
-                        <img src="../../assets/images/pic.png" alt="" class="floor_img">
+                        <img src="../../assets/images/yy.png" alt="" class="floor_img">
                     </div>
                 </div>
                 <div class="floor3 flex justifyContentBetween">
@@ -85,7 +85,7 @@
                         <div class="mt5 font14 font_bold desc" v-if="value==0||value==1">We get hundreds of new Amazon promotions every day. If you are already planning on buying a product through Amazon, try searching on Vipon.com first. There's a good chance you will discover a HUGE discount.</div>
                         <div class="mt5 font_bold font14" v-else>
                             <div class="text_flow1">Offer Great Deals, Skyrocket Sales!</div>
-                            <div class="color_red mt5">Seller Center >></div>
+                            <div class="color_red mt5 cli_pointer" @click="toSellCenter">Seller Center >></div>
                         </div>
                     </div>
                 </div>
@@ -108,11 +108,14 @@ export default{
             },
             vipList:[],
             level_info:{},
+            top_img:''
         }
     },
     created () {
         removeStore('vip_level')
         this.getVipList()
+        this.getTopImg()
+
     },
     components:{
         foot  
@@ -126,6 +129,15 @@ export default{
         
     },
     methods:{
+        getTopImg(){
+            let query = {
+                type:8,//1:首页轮播 7:商品首页轮播 8:vip轮播图
+                limit:1
+            }
+            post('common/getbanner',query).then(res=>{
+                this.top_img = res.data[0].image
+            })
+        },
         getVipList(){
             post('/user/vip?lang=en-us',this.query).then(res=>{
                 if(res.code == 0){
@@ -142,7 +154,10 @@ export default{
                 path:'/mine/submit'
                 })
             }
-        }   
+        },
+        toSellCenter(){
+            this.$router.push('/mine')
+        }  
         
     }
 

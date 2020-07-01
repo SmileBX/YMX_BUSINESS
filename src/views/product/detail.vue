@@ -51,14 +51,14 @@
                 <img src="../../assets/images/x.png" alt="" class="del_icon">
               </div>
           </div>
-          <div class="flex justifyContentAround mt4">
+          <div class="flex justifyContentAround mt4" v-if="!query.user_token">
               <div class="flex flexAlignCenter detail_new_left">
                   <img src="../../assets/images/logo.png" alt="" class="logo">
                   <div class="font14 ml2 text_left"><span class="color_blood">Log in </span>or<span class="color_blood"> Sign up</span>for a Vipon account to post comment</div>
               </div>
               <div class="flex">
-                  <span class="btn_sign sign_in">Log In</span>
-                  <span class="btn_sign sign_up">Sign Up</span>
+                  <span class="btn_sign sign_in cli_pointer" @click="signBtn(1)">Log In</span>
+                  <span class="btn_sign sign_up cli_pointer" @click="signBtn(2)">Sign Up</span>
               </div>
           </div>
           <div class="comments" v-if="commentList.length>0">
@@ -66,15 +66,15 @@
               <div class="list">
                   <div class="coment_item flex justifyContentBetween flexAlignCenter" v-for="(item,index) in commentList" :key="index">
                       <div class="flex flexAlignCenter flex1">
-                          <img :src="item.avtar" alt="" class="logo">
-                          <div class="flex1 ml2">
+                          <img :src="item.avtar" alt="" class="logo bor_radius">
+                          <div class="flex1 ml2 flex flexAlignCenter">
                               <div class="flex">
                                   <span>{{item.user_name}}</span>
-                                  <img src="../../assets/images/happy.png" alt="" class="icon_face">
-                                  <!-- <img src="../../assets/images/normal.png" alt="" class="icon_face">
-                                  <img src="../../assets/images/upset.png" alt="" class="icon_face"> -->
+                                  <img src="../../assets/images/happy.png" alt="" class="icon_face" v-if="item.type==1">
+                                  <img src="../../assets/images/normal.png" alt="" class="icon_face" v-if="item.type==2">
+                                  <img src="../../assets/images/upset.png" alt="" class="icon_face" v-if="item.type==3">
                               </div>
-                              <div class="text_flow1 font12">{{item.content}}</div>
+                              <div class="text_flow1 font12 ml2">{{item.content}}</div>
                           </div>
                       </div>
                       <div class="font14 color_9 item_time">{{item.create_time}}</div>
@@ -91,26 +91,29 @@
               </div>
           </div>
           <!---评价操作-->
-          <div class="coment_menu mt2">
+          <div class="coment_menu mt2" v-if="query.user_token">
               <div class="flex flexAlignStart">
                   <img :src="userInfo.avtar" alt="" class="avater">
                   <div class="flex flexColumn flex1 ml3 flexAlignStart">
                     <span>My Comment</span>
-                    <input type="text" class="com_input">
+                    <input type="text" class="com_input" v-model="content">
                     <div class="flex flexAlignCenter justifyContentBetween com_facegroup mt2">
                         <div>
                             <div class="flex">
-                              <div class="img_box">
-                                <img src="../../assets/images/happy.png" alt="" class="icon_face1">
+                              <div class="img_box" @click="changeFace(1)" :class="{'active':active==1}">
+                                <img src="../../assets/images/happy_w.png" alt="" class="icon_face1" v-if="active==1">
+                                <img src="../../assets/images/happy.png" alt="" class="icon_face1" v-else>
                               </div>
-                              <div class="img_box">
-                                <img src="../../assets/images/normal.png" alt="" class="icon_face1">
+                              <div class="img_box" @click="changeFace(2)" :class="{'active':active==2}">
+                                <img src="../../assets/images/normal_w.png" alt="" class="icon_face1" v-if="active==2">
+                                <img src="../../assets/images/normal.png" alt="" class="icon_face1" v-else>
                               </div>
-                              <div class="img_box">
-                                <img src="../../assets/images/upset.png" alt="" class="icon_face1">
+                              <div class="img_box" @click="changeFace(3)" :class="{'active':active==3}">
+                                <img src="../../assets/images/upset_w.png" alt="" class="icon_face1" v-if="active==3">
+                                <img src="../../assets/images/upset.png" alt="" class="icon_face1" v-else>
                               </div>
                             </div>
-                            <div class="flex mt2">
+                            <!-- <div class="flex mt2">
                               <div class="img_box active">
                                 <img src="../../assets/images/happy_w.png" alt="" class="icon_face1">
                               </div>
@@ -120,9 +123,9 @@
                               <div class="img_box active">
                                 <img src="../../assets/images/upset_w.png" alt="" class="icon_face1">
                               </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="btn_post">Post Comment</div>
+                        <div class="btn_post cli_pointer" @click="Comment">Post Comment</div>
                     </div>
                   </div>
               </div>
@@ -154,10 +157,12 @@ export default{
             comquery:{
               list_rows:2,
               page:1,
-              goods_id:''
+              id:''
             },
             commentList:[],
             total:0,
+            active:1,
+            content:''//评论内容
           }
       },
       created () {
@@ -172,7 +177,7 @@ export default{
       },
       watch: {
         $route(){
-          this.query.id = this.$route.query.id
+          this.comquery.id = this.query.id = this.$route.query.id
           this.getDetail()
           this.innerGetContent()
         }
@@ -181,7 +186,7 @@ export default{
         getCommentList(){
           post('goods/goods_comment_list',this.comquery).then(res=>{
             if(res.code == 0){
-              this.commentList = res.data
+              this.commentList = res.data.data
               this.total = res.data.total
             }
           })
@@ -190,6 +195,9 @@ export default{
           let pramas = this.$route.query;
           if (pramas.list_rows) {
             this.comquery.list_rows = parseInt(pramas.list_rows)
+          }
+          if (pramas.id) {
+            this.comquery.id = parseInt(pramas.id)
           }
           if (pramas.page) {
             this.comquery.page = parseInt(pramas.page)
@@ -203,6 +211,7 @@ export default{
           this.$router.push({
             path: "/detail",
             query:{
+              id:this.query.id,
               page:val,//访问页码
               list_rows:this.comquery.list_rows
             }
@@ -231,10 +240,40 @@ export default{
                 }
             })
         },
+        //登录或者是注册
+        signBtn(key){
+          let path;
+          key==1?path='/login':path='/register'
+          this.$router.push(path)
+        },
+        //评论选择表情
+        changeFace(tt){
+          this.active = tt
+        },
+        //发表腈纶
+        Comment(){
+          let query = {
+            user_token:getToken(),
+            type:this.active,
+            content:this.content,
+            goods_id:this.query.id
+          }
+          post('/goods/goods_comment',query).then(res=>{
+            if(res.code == 0){
+              this.$message({
+                message:res.msg,
+                type:'success'
+              })
+              this.getCommentList()
+              this.content = ''
+            }
+          })
+        }
         
       }
   }
 </script>
 <style lang="less">
 @import url("../../assets/css/product.less");
+
 </style>

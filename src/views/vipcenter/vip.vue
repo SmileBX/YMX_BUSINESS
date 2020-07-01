@@ -1,7 +1,7 @@
 <template>
     <div class="vip_info">
         <div class="color_red font18 font_bold title text_left">VIP</div>
-        <div class="card_list flex mt8 pl56  flexWrap ">
+        <div class="card_list flex mt5 pl56  flexWrap ">
             <div class="card_item mr2" v-for="(item,index) in 1" :class="{'active':index==0}">
                 <div class="flex flexAlignCenter justifyContentBetween">
                     <img src="../../assets/images/vip.png" alt="" class="vip_logo" v-if="index==0">

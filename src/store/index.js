@@ -74,7 +74,7 @@ const store =new Vuex.Store({
                         commit(types.RECEIVE_ADMIN_NAME, data.username);
                         commit(types.RECEIVE_ADMIN_AVATAR, data.avatar);
                         commit(types.RECEIVE_ADMIN_AUTH_RULES, data.authRules);
-                        // resolve(data);
+                        resolve(response);
                     })
                     .catch(error => {
                         reject(error);
