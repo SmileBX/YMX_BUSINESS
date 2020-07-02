@@ -11,19 +11,19 @@
               <div class="font12 color_9 item_subtitle">Fulfilled by Amazon</div>
               <div class="flex justifyContentBetween w100">
                   <div class="flex flex1 ">
-                      <span class="text_through">${{item.currency_price}}</span>
-                      <span class="item_spill">-50%</span>
+                      <span class="text_through">${{item.price}}</span>
+                      <span class="item_spill">-{{100-item.discount}}%</span>
                   </div>
-                  <div class="item_money">${{item.price}}</div>
+                  <div class="item_money">${{item.currency_price}}</div>
               </div>
               <div class="flex justifyContentBetween mt1 w100 color_9">
                 <div class="flex flexAlignCenter">
                     <img src="../assets/images/zan.png" alt="" class="icon_zan">
-                    <span class="ml1">{{item.review}}</span>
+                    <span class="ml1">{{item.fabulous_count}}</span>
                 </div>
                 <div class="flex flexAlignCenter">
                   <img src="../assets/images/comment.png" alt="" class="icon_mes">
-                    <span class="ml1">{{item.fabulous_count}}</span>
+                    <span class="ml1">{{item.review}}</span>
                 </div>
               </div>
           </div>

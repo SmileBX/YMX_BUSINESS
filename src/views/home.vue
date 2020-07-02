@@ -32,18 +32,18 @@
                                         <div class="flex justifyContentBetween w100">
                                             <div class="flex flex1 ">
                                                 <span class="text_through">${{item2.currency_price}}</span>
-                                                <span class="item_spill">-50%</span>
+                                                <span class="item_spill">-{{100-item2.discount}}%</span>
                                             </div>
                                             <div class="item_money">${{item2.price}}</div>
                                         </div>
                                         <div class="flex justifyContentBetween mt1 w100 color_9">
                                           <div class="flex flexAlignCenter">
                                               <img src="../assets/images/zan.png" alt="" class="icon_zan">
-                                              <span class="ml1">{{item2.review}}</span>
+                                              <span class="ml1">{{item2.fabulous_count}}</span>
                                           </div>
                                           <div class="flex flexAlignCenter">
                                             <img src="../assets/images/comment.png" alt="" class="icon_mes">
-                                              <span class="ml1">{{item2.fabulous_count}}</span>
+                                              <span class="ml1">{{item2.review}}</span>
                                           </div>
                                         </div>
                                     </div>
@@ -76,18 +76,18 @@
                                         <div class="flex justifyContentBetween w100">
                                             <div class="flex flex1 ">
                                                 <span class="text_through">${{item3.currency_price}}</span>
-                                                <span class="item_spill">-50%</span>
+                                                <span class="item_spill">-{{100-item3.discount}}%</span>
                                             </div>
                                             <div class="item_money">${{item3.price}}</div>
                                         </div>
                                         <div class="flex justifyContentBetween mt1 w100 color_9">
                                           <div class="flex flexAlignCenter">
                                               <img src="../assets/images/zan.png" alt="" class="icon_zan">
-                                              <span class="ml1">{{item3.review}}</span>
+                                              <span class="ml1">{{item3.fabulous_count}}</span>
                                           </div>
                                           <div class="flex flexAlignCenter">
                                             <img src="../assets/images/comment.png" alt="" class="icon_mes">
-                                              <span class="ml1">{{item3.fabulous_count}}</span>
+                                              <span class="ml1">{{item3.review}}</span>
                                           </div>
                                         </div>
                                     </div>
@@ -128,18 +128,18 @@
                                     <span class="font_bold font16">${{item.currency_price}}</span>
                                     <span class="font12">
                                         <s class="font12">${{item.price}}</s>
-                                        <span class="color_blood font12">50% Discount</span>
+                                        <span class="color_blood font12">{{100-item.discount}}% Discount</span>
                                     </span>
                                 </div>
                                 <div class="font12 flex justifyContentBetween w100 right_list_bottom">
                                     <div>
                                         <span>
                                             <img src="../assets/images/zan_t.png" alt="" class="com_icon">
-                                            <span class="color_blood">{{item.review}}</span>
+                                            <span class="color_blood">{{item.fabulous_count}}</span>
                                         </span>
                                         <span class="ml1">
                                             <img src="../assets/images/comment.png" alt="" class="com_icon">
-                                            <span class="color_9">{{item.fabulous_count}}</span>
+                                            <span class="color_9">{{item.review}}</span>
                                         </span>
                                         <!-- <span class="ml1">
                                             <img src="../assets/images/zan_d.png" alt="" class="com_icon">
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <!---广告图片-->
-                    <div>
+                    <!-- <div>
                         <div class="big_img_box">
                             <img src="../assets/images/pic.png" alt="" class="big_pic">
                             <img src="../assets/images/x.png" alt="" class="del_icon">
@@ -161,7 +161,7 @@
                             <img src="../assets/images/pic.png" alt="" class="big_pic">
                             <img src="../assets/images/x.png" alt="" class="del_icon">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -252,8 +252,8 @@ export default{
                     this.floor1data = res.data.cate_list[0].list
                     this.floor2data = res.data.cate_list[1].list
                     this.proList = res.data.cate_list.slice(2)
-                    console.log(this.floor1data,"111111111111")
-                    console.log(this.floor2data,"22222222222222")
+                    // console.log(this.floor1data,"111111111111")
+                    // console.log(this.floor2data,"22222222222222")
                     this.$nextTick(function () {
                         _this.initSwiperGroup()
                     })
@@ -298,7 +298,7 @@ export default{
             })
         },
         changeSlider(){
-            console.log(this.screenWidth,"333333333333333333333333")
+            // console.log(this.screenWidth,"333333333333333333333333")
             if(this.screenWidth>1500){
                 this.swiperSlider = 6
             }else if(this.screenWidth<1500 && this.screenWidth>1200){
@@ -310,7 +310,7 @@ export default{
             }else{
                 this.swiperSlider = 2
             }
-            console.log(this.swiperSlider,"llllllllllllllll")
+            // console.log(this.swiperSlider,"llllllllllllllll")
             this.$nextTick(()=>{
                 this.initSwiperGroup()
             })
@@ -324,7 +324,6 @@ export default{
             }
         },
         initSwiperGroup(){
-            console.log("8585858585")
             this.hasSwiper = true
             new Swiper('.swiper-container.swiper-container2', {
                 slidesPerView: this.swiperSlider,

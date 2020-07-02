@@ -10,7 +10,7 @@
                   <div class="flex font14 mt2 justifyContentBetween w100">
                       <div class="flex flexAlignCenter">
                           <img src="../../assets/images/time.png" alt="">
-                          <span class="ml1">Listing expires In <span class="color_red">6days</span></span>
+                          <span class="ml1">Listing expires In <span class="color_red">{{days}} days</span></span>
                       </div>
                       <div class="flex flexAlignCenter">
                           <img src="../../assets/images/zan_t.png" alt="" class="icon_img">
@@ -25,10 +25,10 @@
                       <div class="font22 font_bold color_blood">${{info.currency_price}}</div>
                       <div class="flex  ml3">
                           <div class="text_through font14">${{info.price}}</div>
-                          <div class="color_blood font14 ml1">50% Discount</div>
+                          <div class="color_blood font14 ml1">{{100-info.discount}}% Discount</div>
                       </div>
                   </div>
-                  <div class="get_cou  font18">Get Coupon</div>
+                  <div class="get_cou  font18 cli_pointer">Get Coupon</div>
                   <div class="flex ">
                       <img src="../../assets/images/bq.png" alt="" class="icon_bq">
                       <span class="font14 text_left">This coupon code can be applied to all variations of this product.</span>
@@ -38,10 +38,10 @@
                   <div class="pro_mention  font14 text_left "> 
                     3D Stereo Sound & Bluetooth 5.1 Bluetooth wireless earphones with noise cancelling, you can shield surrounding noises, enjoy your music everywhere even in a loud environment. Wireless earbuds adopt the most advanced Bluetooth 5.1
                   </div>
-                  <div class="open_ama">Open in Amazon</div>
+                  <div class="open_ama cli_pointer">Open in Amazon</div>
               </div>
           </div>
-          <div class="flex justifyContentBetween mt5">
+          <!-- <div class="flex justifyContentBetween mt5">
               <div class="img_left">
                   <img src="" alt="">
                   <img src="../../assets/images/x.png" alt="" class="del_icon">
@@ -50,7 +50,7 @@
                 <img src="" alt="">
                 <img src="../../assets/images/x.png" alt="" class="del_icon">
               </div>
-          </div>
+          </div> -->
           <div class="flex justifyContentAround mt4" v-if="!query.user_token">
               <div class="flex flexAlignCenter detail_new_left">
                   <img src="../../assets/images/logo.png" alt="" class="logo">
@@ -162,6 +162,7 @@ export default{
             commentList:[],
             total:0,
             active:1,
+            days:0,
             content:''//评论内容
           }
       },
@@ -229,10 +230,18 @@ export default{
             if(res.code == 0){
               this.info = res.data
               this.alsoList = res.data.also_like_list
+              let minTimes = res.data.end_time - res.data.start_time
+              if(minTimes>0){
+                this.days  = (minTimes / 1000 / 60 / 60 / 24).toFixed(2);
+              }else{
+                this.dasys =  0
+              }
+              
             }
           })
         },
         toDetail(id){
+          // console.log(id,"lllll")
           this.$router.push({
                 path:'/detail',
                 query:{

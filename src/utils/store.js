@@ -15,6 +15,7 @@ export const setStore = (name, content, expireDay) => {
  * 获取localStorage
  */
 export const getStore = name => {
+    
     if (!name) return;
     let content = Cookies.get(name);
     try {

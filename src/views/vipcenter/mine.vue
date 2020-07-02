@@ -122,25 +122,26 @@
     },
     methods: {
       getUserInfo(){
-            let query = {
-                user_token:getToken()
-            }
-            post('user/getuserinfo',query).then(res=>{
-                if(res.code == 0){
-                    this.username = res.data.username
-                    this.level_name = res.data.level_name
-                    this.avtar = res.data.avtar
-                    
-                }
-            })
-        },
-        toProfile(){
-          this.$router.push({
+          let query = {
+              user_token:getToken()
+          }
+          post('user/getuserinfo',query).then(res=>{
+              if(res.code == 0){
+                  this.username = res.data.username
+                  this.level_name = res.data.level_name
+                  this.avtar = res.data.avtar
+                  
+              }
+          })
+      },
+      toProfile(){
+        this.$router.push({
             path:"/mine/edit",
             query:{
               type:5,
-        }})
-        },
+            }
+        })
+      },
       choseIndex(key, keyPath){
         // console.log(key,"key")
         this.activeIndex = key
