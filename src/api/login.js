@@ -2,6 +2,14 @@
  * Created by lk on 17/6/4.
  */
 import axios from "./axios";
+// 获取亚马逊折扣信息
+export function userAmzcode(user_token,id) {
+    return axios({
+        url: "/goods/view_links?lang=en-us",
+        method: "post",
+        params: { user_token,id }
+    });
+}
 // 获取信息
 export function userInfo(user_token) {
     return axios({

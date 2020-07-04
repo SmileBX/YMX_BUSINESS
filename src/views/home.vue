@@ -22,7 +22,7 @@
                             <div class="swiper-slide swiper-slide2" v-for="(item2,index2) in floor1data" :key="index2" >
                                 <div class="pro_item1">
                                     <div class="item_mask font14 flex">
-                                        <div class="get_coupon">Get Coupon</div>
+                                        <div class="get_coupon cli_pointer" @click="getCode([item2.id,item2.price,item2.currency_price,item2.amazon_url])">Get Coupon</div>
                                         <div class="mt2 cli_pointer" @click="detail(item2)">View detial >></div>
                                     </div>
                                     <img :src="item2.image" alt="" class="item_img">
@@ -66,7 +66,7 @@
                             <div class="swiper-slide swiper-slide2" v-for="(item3,index3) in floor2data" :key="index3" >
                                 <div class="pro_item1">
                                     <div class="item_mask font14 flex">
-                                        <div class="get_coupon">Get Coupon</div>
+                                        <div class="get_coupon cli_pointer" @click="getCode([item3.id,item3.price,item3.currency_price,item3.amazon_url])">Get Coupon</div>
                                         <div class="mt2 cli_pointer" @click="detail(item3)">View detial >></div>
                                     </div>
                                     <img :src="item3.image" alt="" class="item_img">
@@ -103,7 +103,7 @@
                 <div class="mt5" v-for="(item4,index4) in proList">
                     <div class="font24 font_bold text_left"  v-if="item4.list.length>0">{{item4.us_title}}</div>
                     <div class="pw2" v-if="item4.list.length>0">
-                        <proItem :data="item4.list" @success="toDetail"></proItem>
+                        <proItem :data="item4.list" @emitCode="getCode"  @success="toDetail"></proItem>
                     </div>
                 </div>
                 <!--seemore-->
@@ -146,7 +146,7 @@
                                             <span class="color_9">12</span>
                                         </span> -->
                                     </div>
-                                    <div class="color_red">Get coupon >></div>
+                                    <div class="color_red" @click.stop="getCode([item.id,item.price,item.currency_price,item.amazon_url])">Get coupon >></div>
                                 </div>
                             </div>
                         </div>
@@ -221,6 +221,18 @@ export default{
         this.getAllList()//所有的产品 分类轮播 右侧列表
     },
     methods:{
+        getCode(argument){
+          // console.log(argument,"item")
+          this.$router.push({
+            name:'coupon',
+            params:{
+              id:argument[0],
+              befor_price:argument[1],
+              currency_price:argument[2],
+              amzUrl:argument[3]
+            }
+          })
+        },
         //初始化顶部萝卜兔
         initBanner(){
             new Swiper ('.swiper-container.swiper_floor1', {
@@ -394,5 +406,8 @@ export default{
   }
   .home_banner{
       position: relative;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after{
+      font-size:1rem!important;
   }
 </style>

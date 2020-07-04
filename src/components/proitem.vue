@@ -2,7 +2,7 @@
   <div class="flex deal_list">
       <div class="pro_item" v-for="(item,index) in data" :key="index">
           <div class="item_mask font14 flex">
-              <div class="get_coupon">Get Coupon</div>
+              <div class="get_coupon cli_pointer" @click="code(item)">Get Coupon</div>
               <div class="mt2 cli_pointer" @click="viewDetail(item)">View detial >></div>
           </div>
           <img :src="item.image" alt="" class="item_img">
@@ -41,6 +41,9 @@
     methods:{
       viewDetail(item){
         this.$emit('success',item.id)
+      },
+      code(item){
+        this.$emit('emitCode',[item.id,item.price,item.currency_price,item.amazon_url])
       }
     }
   }

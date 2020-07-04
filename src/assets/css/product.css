@@ -107,9 +107,12 @@
   line-height: 1.2;
 }
 .detail .icon_img {
-  width: 11px;
-  height: 11px;
-  margin: 0 0.2rem;
+  width: 15px;
+  height: 15px;
+  margin: 0 0.1rem;
+}
+.detail .icon_active {
+  color: red;
 }
 .detail .get_cou {
   color: #ffffff;

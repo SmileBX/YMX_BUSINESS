@@ -18,7 +18,7 @@
       </div>
       <div v-if="favoriteList.length>0">
         <!--分类列表-->
-        <proItem :data="favoriteList"  @success="toDetail"></proItem>
+        <proItem :data="favoriteList" @emitCode="getCode"  @success="toDetail"></proItem>
         <div class="block mt5">
           <el-pagination
             @current-change="handleCurrentChange"
@@ -66,6 +66,26 @@
         this.innerGetContent()
       },
       methods:{
+        toDetail(id){
+            this.$router.push({
+                path:'/detail',
+                query:{
+                    id:id
+                }
+            })
+        },
+        getCode(argument){
+          // console.log(argument,"item")
+          this.$router.push({
+            name:'coupon',
+            params:{
+              id:argument[0],
+              befor_price:argument[1],
+              currency_price:argument[2],
+              amzUrl:argument[3]
+            }
+          })
+        },
         initData(){
           this.query = {
               user_token:getToken(),

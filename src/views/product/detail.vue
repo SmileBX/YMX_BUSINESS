@@ -13,12 +13,17 @@
                           <span class="ml1">Listing expires In <span class="color_red">{{days}} days</span></span>
                       </div>
                       <div class="flex flexAlignCenter">
-                          <img src="../../assets/images/zan_t.png" alt="" class="icon_img">
-                          <span class="color_red font12">{{info.fabulous_count}}</span>
-                          <img src="../../assets/images/comment.png" alt="" class="icon_img">
-                          <span class="font12">{{info.review}}</span>
-                          <img src="../../assets/images/zan_d.png" alt="" class="icon_img">
-                          <span class="font12">{{info.step_count}}</span>
+                          <img src="../../assets/images/11.png" alt="" class="icon_img" v-if="info.is_fabulous==0 || info.is_fabulous==2" @click="zan">
+                          <img src="../../assets/images/dzs.png" alt="" class="icon_img" v-if="info.is_fabulous==1">
+                          <img src="../../assets/images/13.png" alt="" class="icon_img" v-if="info.is_favorite==0" @click="collect">
+                          <img src="../../assets/images/14.png" alt="" class="icon_img" v-if="info.is_favorite==1" @click="collect">
+                          <img src="../../assets/images/12.png" alt="" class="icon_img" v-if="info.is_fabulous==0 ||　info.is_fabulous==1" @click="cai">
+                          <img src="../../assets/images/15.png" alt="" class="icon_img" v-if="info.is_fabulous==2">
+                          <!-- <span class="color_red font12">{{info.fabulous_count}}</span> -->
+                          
+                          <!-- <span class="font12">{{info.review}}</span> -->
+                          <!-- <img src="../../assets/images/12.png" alt="" class="icon_img" :class="{'icon_active':info}"> -->
+                          <!-- <span class="font12">{{info.step_count}}</span> -->
                       </div>
                   </div>
                   <div class="flex  flexAlignEnd">
@@ -28,7 +33,7 @@
                           <div class="color_blood font14 ml1">{{100-info.discount}}% Discount</div>
                       </div>
                   </div>
-                  <div class="get_cou  font18 cli_pointer">Get Coupon</div>
+                  <div class="get_cou  font18 cli_pointer" @click="getCode">Get Coupon</div>
                   <div class="flex ">
                       <img src="../../assets/images/bq.png" alt="" class="icon_bq">
                       <span class="font14 text_left">This coupon code can be applied to all variations of this product.</span>
@@ -38,7 +43,7 @@
                   <div class="pro_mention  font14 text_left "> 
                     3D Stereo Sound & Bluetooth 5.1 Bluetooth wireless earphones with noise cancelling, you can shield surrounding noises, enjoy your music everywhere even in a loud environment. Wireless earbuds adopt the most advanced Bluetooth 5.1
                   </div>
-                  <div class="open_ama cli_pointer">Open in Amazon</div>
+                  <div class="open_ama cli_pointer" @click="openAmz">Open in Amazon</div>
               </div>
           </div>
           <!-- <div class="flex justifyContentBetween mt5">
@@ -184,6 +189,18 @@ export default{
         }
       },
       methods:{
+        //查看折扣
+        getCode(){
+          this.$router.push({
+            name:'coupon',
+            params:{
+              id:this.query.id,
+              befor_price:this.info.price,
+              currency_price:this.info.currency_price,
+              amzUrl:this.info.amazon_url
+            }
+          })
+        },
         getCommentList(){
           post('goods/goods_comment_list',this.comquery).then(res=>{
             if(res.code == 0){
@@ -277,6 +294,60 @@ export default{
               this.content = ''
             }
           })
+        },
+        zan(){
+          let query = {
+            user_token:getToken(),
+            type:1,
+            id:this.query.id
+          }
+          post('goods/add_sheet',query).then(res=>{
+            if(res.code == 0){
+              this.$message({
+                message:res.msg,
+                type:'success'
+              })
+              this.info.is_fabulous=1
+            }
+          })
+        },
+        cai(){
+          let query = {
+            user_token:getToken(),
+            type:2,
+            id:this.query.id
+          }
+          post('goods/add_sheet',query).then(res=>{
+            if(res.code == 0){
+              this.$message({
+                message:res.msg,
+                type:'success'
+              })
+              this.info.is_fabulous=2
+            }
+          })
+        },
+        collect(){
+          let query = {
+            user_token:getToken(),
+            goods_id:this.query.id
+          }
+          post('goods/add_collect',query).then(res=>{
+            if(res.code == 0){
+              this.$message({
+                message:res.msg,
+                type:'success'
+              })
+              if(this.info.is_favorite==1){
+                this.info.is_favorite = 0
+              }else{
+                this.info.is_favorite = 1
+              }
+            }
+          })
+        },
+        openAmz(){
+          window.open(this.info.amazon_url,"_blank")
         }
         
       }

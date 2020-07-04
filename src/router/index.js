@@ -49,7 +49,7 @@ export default new Router({
     },
     {
       path: '/coupon',
-      name: '优惠券',
+      name: 'coupon',
       component: () => import(/* webpackChunkName: "about" */ '../views/product/coupon.vue')
     },
     {

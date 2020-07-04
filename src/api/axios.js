@@ -55,7 +55,7 @@ service.interceptors.response.use(
                         });
                     },1500)
                 });
-            }else if(data.code == 408){
+            }else if(data.code == 1000002){
                 Message.error("请重新登录后使用！");
                 router.push({
                     path: "/login",

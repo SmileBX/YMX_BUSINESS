@@ -5,7 +5,7 @@
             <div class="nav_left flex flexAlignCenter">
                 <div class="flex flexAlignCenter">
                     <img src="../assets/images/logo.png" alt="" class="logo">
-                    <span class="logo_brand font_bold">VIPON</span>
+                    <span class="logo_brand font_bold">AMZSHOP</span>
                 </div>
                 <div class="flex ml6">
                     <div @click="changeNav(1)" class="cli_pointer">
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="nav_right flex flexAlignCenter font14">
-                <img src="../assets/images/notice.png" alt="" class="icon_notice">
+                <img src="../assets/images/out.png" alt="" class="icon_notice" @click="logout">
                 <div class="flex ml2 cli_pointer" @click="mineCenter" v-if="query.user_token">
                     <img :src="userInfo.avtar" alt="" class="icon_tx">
                     <div class="flex flexAlignCenter ml1">
@@ -63,7 +63,7 @@
           <div class="nav_left flex flexAlignCenter">
               <div class="flex flexAlignCenter">
                   <img src="../assets/images/logo.png" alt="" class="logo">
-                  <span class="logo_brand font_bold">VIPON</span>
+                  <span class="logo_brand font_bold">AMZSHOP</span>
               </div>
               <div class="flex ml6">
                   <el-dropdown>
@@ -183,6 +183,12 @@ export default{
       let path;
       tl==1?path='/login':path='/register'
       this.$router.push(path)
+    },
+    //退出登录
+    logout(){
+      this.$store.dispatch('loginOut').then(res=>{
+        this.$router.push('/login')
+      })
     }
   },
   watch: {

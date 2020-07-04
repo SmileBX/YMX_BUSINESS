@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { userInfo, loginName, logout } from "../api/login";
+import { userInfo, loginName, logout ,userAmzcode } from "../api/login";
 import * as types from "./mutation-types";
 import {
     getToken,
@@ -105,6 +105,21 @@ const store =new Vuex.Store({
                 commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
                 resolve();
             });
+        },
+        //获取折扣码 亚马逊链接
+        getAmzurlCode({ commit },amzInfo){
+            const token = amzInfo.user_token
+            const id = amzInfo.id
+            return new Promise((resolve,reject)=>{
+                userAmzcode(token,id).then(res=>{
+                    if(res.code == 0){
+                        resolve(res);
+                    }
+                })
+                .catch(err=>{
+                    reject(err)
+                })
+            })
         },
         /**
          * 过滤路由列表

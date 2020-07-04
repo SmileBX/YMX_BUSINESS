@@ -21,16 +21,16 @@ $(window).resize(function ()// 绑定到窗口的这个事件中
     document.documentElement.style.fontSize = rem + 'px';
 });
 
-// $(function () {
-//     if (window.innerWidth > 1080)
-//     return;
-//     let designSize = 750; // 设计图尺寸
+$(function () {
+    if (window.innerWidth > 1080)
+    return;
+    let designSize = 750*2; // 设计图尺寸
 
-//     let html = document.documentElement;
+    let html = document.documentElement;
 
-//     let wW = html.clientWidth;// 窗口宽度
-//     let rem = wW * 100 / designSize;
+    let wW = html.clientWidth;// 窗口宽度
+    let rem = wW * 100 / designSize;
 
-//     document.documentElement.style.fontSize = rem + 'px';
+    document.documentElement.style.fontSize = rem + 'px';
     
-// })
+})
