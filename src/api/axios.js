@@ -27,9 +27,9 @@ export function post(url, body) {
 service.interceptors.request.use(
     config => {
         // Do something before request is sent
-        if (store.getters.adminId && store.getters.token) {
+        if (store.getters.adminId && store.getters.token1) {
             config.headers["X-Adminid"] = store.getters.adminId;
-            config.headers["X-Token"] = store.getters.token;
+            config.headers["X-Token"] = store.getters.token1;
         }
         return config;
     },

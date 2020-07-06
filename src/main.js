@@ -5,7 +5,7 @@ import 'swiper/css/swiper.css';
 import App from './App'
 import HeaderNav from './components/headNav';
 import router from './router'
-import {getToken} from './utils/auth.js'
+// import {getToken} from './utils/auth.js'
 import ElementUI from 'element-ui';
 import { Message ,MessageBox } from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en'

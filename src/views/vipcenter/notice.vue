@@ -4,7 +4,7 @@
           <div class="text_left font_bold pp2 font18 color_red ">Notifications</div>
           <div v-if="hasData" >
             <div class="notice_list pw2" >
-                <div class="notice_item p2 flex flexAlignCenter font16" v-for="(item,index) in 5" :key="index">
+                <div class="notice_item p2 flex flexAlignCenter font16" v-for="(item,index) in newslist" :key="index">
                     <div class="img_icon">
                         <!-- <img src="../../assets/images/pro.png" alt="" class="img1"> -->
                         <img src="../../assets/images/msg.png" alt="" class="img2">
@@ -13,11 +13,14 @@
                     <div class="content_notice">
                         <div class="flex flexAlignCenter">
                             <div>Removal reminder</div>
-                            <span class="font14 color_9 ml2">2020.05.12 12:47</span>
+                            <span class="font14 color_9 ml2">{{item.create_time}}</span>
                         </div>   
-                        <div class="mt2">[
+                        <div class="mt2">{{item.content}}
+                          <!-- [
                             <span class="color_blue text_underline">Power Bank 10000mAh Portable Charger with Dual Out...</span>
-                            ]will be removed in three days, please go to renew.</div>
+                            ]will be removed in three days, please go to renew
+                           -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,7 +98,7 @@
               }else{
                 this.hasData = false
               }
-              this.newslist = res.data
+              this.newslist = res.data.data
             }
           }).catch((err)=>{})
         },

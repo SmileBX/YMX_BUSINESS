@@ -21,7 +21,7 @@ const store =new Vuex.Store({
         adminId: getAdminId(), // id
         userName: "", // 昵称
         avatar: "", // 头像
-        token: getToken(), // 登录token
+        token1: getToken(), // 登录token
         authRules: [], // 权限列表
         newsCount:0,//消息数量
         // routers: constantRouterMap // 路由列表
@@ -30,7 +30,7 @@ const store =new Vuex.Store({
         adminId: state => state.adminId,
         userName: state => state.userName,
         avatar: state => state.avatar,
-        token: state => state.token,
+        token1: state => state.token1,
         authRules: state => state.authRules,
         newsCount:state=>state.newsCount
         // routers: state => state.routers
@@ -52,8 +52,8 @@ const store =new Vuex.Store({
                             });
                         } else {
                             let data = response.data;
-                            commit(types.RECEIVE_ADMIN_ID, data.member_id);
-                            commit(types.RECEIVE_ADMIN_TOKEN, data.user_token);
+                            commit(types.ADMIN_ID, data.member_id);
+                            commit(types.ADMIN_TOKEN, data.user_token);
                             commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
                         }
                         resolve(response);
@@ -86,8 +86,8 @@ const store =new Vuex.Store({
             return new Promise((resolve, reject) => {
                 logout()
                     .then(() => {
-                        commit(types.RECEIVE_ADMIN_ID, "");
-                        commit(types.RECEIVE_ADMIN_TOKEN, "");
+                        commit(types.ADMIN_ID, "");
+                        commit(types.ADMIN_TOKEN, "");
                         commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
                         resolve();
                     })
@@ -100,8 +100,8 @@ const store =new Vuex.Store({
         // 前端 登出
         fedLogout({ commit }) {
             return new Promise(resolve => {
-                commit(types.RECEIVE_ADMIN_ID, "");
-                commit(types.RECEIVE_ADMIN_TOKEN, "");
+                commit(types.ADMIN_ID, "");
+                commit(types.ADMIN_TOKEN, "");
                 commit(types.RECEIVE_ADMIN_AUTH_RULES, []);
                 resolve();
             });
@@ -135,7 +135,7 @@ const store =new Vuex.Store({
         }
     },
     mutations:{
-        [types.RECEIVE_ADMIN_ID](state, adminId) {
+        [types.ADMIN_ID](state, adminId) {
             state.adminId = adminId;
             if (adminId === "") {
                 removeAdminId();
@@ -143,8 +143,8 @@ const store =new Vuex.Store({
                 setAdminId(adminId);
             }
         },
-        [types.RECEIVE_ADMIN_TOKEN](state, token) {
-            state.token = token;
+        [types.ADMIN_TOKEN](state, token) {
+            state.token1 = token;
             if (token === "") {
                 removeToken();
             } else {

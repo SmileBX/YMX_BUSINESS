@@ -113,7 +113,7 @@
     </div>
 </template>
 <script>
-
+import {post} from '@/api/axios.js'
 import {getToken} from '@/utils/auth'
 export default{
   data(){
@@ -167,7 +167,13 @@ export default{
       }
     },//商家入驻
     ToBus(){
-      window.open('https://admin.amzshop-us.uk/',"_blank"); 
+      //获取国内或者或外的域名连接
+      post('goods/shop_url').then(res=>{
+        if(res.code == 0){
+          window.open(res.data,"_blank"); 
+        }
+      })
+      // window.open('https://admin.amzshop-us.uk/',"_blank"); 
     },
     getUserInfo(){
       this.$store.dispatch('userInfo',this.query.user_token).then(res=>{

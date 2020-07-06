@@ -69,10 +69,10 @@
             </el-menu-item> -->
             <el-menu-item index="3" class="flex flexColumn flexAlignCenter four_em_item">
               <i class="el-icon-s-opportunity"></i>
-              <el-badge  :max="99" class="item mobile_badeg">
+              <el-badge :value="newsCount"  :max="99" class="item mobile_badeg" v-if="newsCount>0">
                 Notification
               </el-badge>
-              <!-- <span slot="title">Notification</span> -->
+              <span v-else>Notification</span>
             </el-menu-item>
             <el-menu-item index="4" class="flex flexColumn flexAlignCenter four_em_item">
               <i class="el-icon-attract"></i>
@@ -109,7 +109,8 @@
         activeIndex:"1",
         username:'',
         avtar:'',
-        level_name:''
+        level_name:'',
+        newsCount:0,
       }
     },
     created(){
@@ -119,6 +120,7 @@
         this.activeIndex="1"
       }
       this.getUserInfo()
+      this.getNewsList()
     },
     methods: {
       getUserInfo(){
@@ -133,6 +135,19 @@
                   
               }
           })
+      },
+      //获取消息
+      getNewsList(){
+        post('user/user_notice',this.query).then(res=>{
+            this.$store.commit('changeNewsCount',res.data.total)
+            this.newsCount = this.$store.state.newsCount
+            console.log(this.newsCount,"this.newsCount")
+          if(res.code == 0){
+            this.$store.commit('changeNewsCount',res.data.total)
+            this.newsCount = this.$store.state.newsCount
+            
+          }
+        })
       },
       toProfile(){
         this.$router.push({
